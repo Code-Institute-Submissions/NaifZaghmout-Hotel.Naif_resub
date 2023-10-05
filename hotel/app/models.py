@@ -21,3 +21,36 @@ class Hotels(models.Model):
 
     def __str__(self):
         return self.hotel_name
+
+        
+
+    class Rooms(models.Model):
+
+     """
+     Rooms in the hotel
+     Room Type
+     Room Availability
+     Maximum Capacity
+     """
+
+    AVAILABILITY: tuple = (
+        ("1", "Available"),
+        ("2", "Not Available"),
+    )
+
+    ROOM_TYPE: tuple = (
+        ("1", "Suite"),
+        ("2", "Penthouse"),
+        ("3", "Quad Bedroom"),
+    )
+
+    room_type = models.CharField(max_length=50, choices=ROOM_TYPE)
+    max_capacity = models.IntegerField()
+    room_price = models.IntegerField()
+    room_size = models.IntegerField()
+    hotel = models.ForeignKey(Hotels, on_delete=models.CASCADE)
+    availability_status = models.CharField(choices=AVAILABILITY, max_length=15)
+    room_number = models.IntegerField()
+
+    def __str__(self):
+        return self.hotel.hotel_name
