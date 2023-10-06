@@ -54,3 +54,20 @@ class Hotels(models.Model):
 
     def __str__(self):
         return self.hotel.hotel_name
+
+
+
+class Reservation(models.Model):
+    """
+    Reservation of the room
+    """
+
+    check_in_date = models.DateField(auto_now=False)
+    check_out_date = models.DateField()
+    room = models.ForeignKey(Rooms, on_delete=models.CASCADE)
+    guest = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    booking_id = models.CharField(max_length=100, default="null")
+
+    def __str__(self):
+        return self.guest.username
