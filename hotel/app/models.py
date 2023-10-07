@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Hotels(models.Model):
-    
+
     """
     Hotels Info
     Hotel Name, Owner Name, Location, State Country
@@ -26,7 +26,6 @@ class Hotels(models.Model):
         
 
     class Rooms(models.Model):
-
      """
      Rooms in the hotel
      Room Type
