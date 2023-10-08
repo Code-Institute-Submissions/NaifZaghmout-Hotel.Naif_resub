@@ -67,3 +67,11 @@ def home(request):
         response = render(request, "index.html", {"all_location": all_location})
 
     return HttpResponse(response)
+
+
+    def about_us(request):
+    
+     """
+     About us page
+     """
+    return HttpResponse(render(request, "about.html"))
