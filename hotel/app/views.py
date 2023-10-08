@@ -75,3 +75,13 @@ def home(request):
      About us page
      """
     return HttpResponse(render(request, "about.html"))
+
+
+
+
+    def contact(request):
+
+     """
+     Contact page
+     """
+    return HttpResponse(render(request, "contact.html"))
