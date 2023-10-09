@@ -85,3 +85,14 @@ def home(request):
      Contact page
      """
     return HttpResponse(render(request, "contact.html"))
+
+
+
+    
+@login_required(login_url="/user")
+def book_room_page(request):
+    """
+    Book page
+    """
+    room = Rooms.objects.all().get(id=int(request.GET["roomid"]))
+    return HttpResponse(render(request, "user/book_room.html", {"room": room}))
