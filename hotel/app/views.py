@@ -107,3 +107,23 @@ def book_room_page(request):
      404 Page
      """
     return render(request, "404.html", status=404)
+
+
+
+
+@login_required(login_url="/user")
+def user_bookings(request):
+    
+    """
+    Book the room
+    """
+    if request.user.is_authenticated == False:
+        return redirect("userloginpage")
+    user = User.objects.all().get(id=request.user.id)
+    print(f"request user id ={request.user.id}")
+    bookings = Reservation.objects.all().filter(guest=user)
+    if not bookings:
+        messages.warning(request, "No Bookings Found")
+    return HttpResponse(
+        render(request, "user/my_bookings.html", {"bookings": bookings})
+    )
