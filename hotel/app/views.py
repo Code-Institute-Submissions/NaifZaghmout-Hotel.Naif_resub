@@ -24,7 +24,8 @@ def home(request):
     Home Page of the website
     """
     all_location = (
-        Hotels.objects.values_list("hotel_location", "id").distinct().order_by()
+        Hotels.objects.values_list(
+            "hotel_location", "id").distinct().order_by()
     )
     if request.method != "POST":
         data: dict = {"all_location": all_location}
@@ -64,56 +65,41 @@ def home(request):
         response = render(request, "index.html", data)
     except RenderingHotels as e_x:
         messages.error(request, e_x)
-        response = render(request, "index.html", {"all_location": all_location})
+        response = render(request, "index.html", {
+                          "all_location": all_location})
 
     return HttpResponse(response)
 
-
     def about_us(request):
-    
-     """
-     About us page
-     """
+        """
+        About us page
+        """
     return HttpResponse(render(request, "about.html"))
 
-
-
-
     def contact(request):
-
-     """
-     Contact page
-     """
+        """
+        Contact page
+        """
     return HttpResponse(render(request, "contact.html"))
 
 
-
-    
 @login_required(login_url="/user")
 def book_room_page(request):
-
     """
     Book page
     """
     room = Rooms.objects.all().get(id=int(request.GET["roomid"]))
     return HttpResponse(render(request, "user/book_room.html", {"room": room}))
 
-
-
-
     def handler404(request):
-
-     """
-     404 Page
-     """
+        """
+        404 Page
+        """
     return render(request, "404.html", status=404)
-
-
 
 
 @login_required(login_url="/user")
 def user_bookings(request):
-    
     """
     Book the room
     """
@@ -128,14 +114,12 @@ def user_bookings(request):
         render(request, "user/my_bookings.html", {"bookings": bookings})
     )
 
-
-
-    
     @login_required(login_url="/user")
 def book_room(request):
     """
     Booking of the room
     """
+
     if request.method != "POST":
         return HttpResponse("Access Denied")
 
@@ -153,5 +137,26 @@ def book_room(request):
         ) and str(each_reservation.check_out_date) > str(request.POST["check_out"]):
             pass
         else:
-            messages.warning(request, "Sorry This Room is unavailable for Booking")
+            messages.warning(
+                request, "Sorry This Room is unavailable for Booking")
             return redirect("HomePage")
+
+        current_user = request.user
+
+    reservation = Reservation()
+    room_object = Rooms.objects.all().get(id=room_id)
+    room_object.availability_status = "2"
+
+    user_object = User.objects.all().get(username=current_user)
+
+    reservation.guest = user_object
+    reservation.room = room_object
+
+    reservation.check_in_date = request.POST["check_in"]
+    reservation.check_out_date = request.POST["check_out"]
+
+    reservation.save()
+
+    messages.success(request, "Congratulations! Booking Successfull")
+
+    return redirect("HomePage")
