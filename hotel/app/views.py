@@ -127,3 +127,31 @@ def user_bookings(request):
     return HttpResponse(
         render(request, "user/my_bookings.html", {"bookings": bookings})
     )
+
+
+
+    
+    @login_required(login_url="/user")
+def book_room(request):
+    """
+    Booking of the room
+    """
+    if request.method != "POST":
+        return HttpResponse("Access Denied")
+
+    room_id = request.POST["room_id"]
+
+    room = Rooms.objects.all().get(id=room_id)
+    # for finding the reserved rooms on this time period for excluding from the query set
+    for each_reservation in Reservation.objects.all().filter(room=room):
+        if str(each_reservation.check_in_date) < str(request.POST["check_in"]) and str(
+            each_reservation.check_out_date
+        ) < str(request.POST["check_out"]):
+            pass
+        elif str(each_reservation.check_in_date) > str(
+            request.POST["check_in"]
+        ) and str(each_reservation.check_out_date) > str(request.POST["check_out"]):
+            pass
+        else:
+            messages.warning(request, "Sorry This Room is unavailable for Booking")
+            return redirect("HomePage")
