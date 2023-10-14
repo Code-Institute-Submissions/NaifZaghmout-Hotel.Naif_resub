@@ -85,3 +85,49 @@ def staff_sign_up(request):
     new_user.save()
     messages.success(request, " Staff Registration Successfull")
     return redirect("staffloginpage")
+
+
+
+def user_log_sign_page(request):
+    """
+    User SignUp/ Login Page
+    """
+    if request.method != "POST":
+        response = render(request, "user/user_login_signup.html")
+        return HttpResponse(response)
+
+    email = request.POST["email"]
+    password = request.POST["pswd"]
+
+    user = authenticate(username=email, password=password)
+    try:
+        if user.is_staff:
+            messages.error(request, "Incorrect username or Password")
+            return redirect("staffloginpage")
+    except:
+        pass
+
+    if user is not None:
+        login(request, user)
+        messages.success(request, "successful logged in")
+        print("Login successfull")
+        return redirect("HomePage")
+
+    messages.warning(request, "Incorrect username or password")
+    return redirect("userloginpage")
+
+
+def logoutuser(request):
+
+    """
+    Logout user
+    """
+    
+    if request.method != "GET":
+        print("logout unsuccessfull")
+        return redirect("userloginpage")
+
+    logout(request)
+    messages.success(request, "Logged out successfully")
+    print("Logged out successfully")
+    return redirect("HomePage")
