@@ -122,7 +122,7 @@ def logoutuser(request):
     """
     Logout user
     """
-    
+
     if request.method != "GET":
         print("logout unsuccessfull")
         return redirect("userloginpage")
@@ -131,3 +131,27 @@ def logoutuser(request):
     messages.success(request, "Logged out successfully")
     print("Logged out successfully")
     return redirect("HomePage")
+
+
+
+    def staff_log_sign_page(request):
+
+     """
+     Staff login page
+     """
+     
+    if request.method == "POST":
+        username = request.POST["username"]
+        password = request.POST["password"]
+
+        user = authenticate(username=username, password=password)
+
+        if user.is_staff:
+            login(request, user)
+            return redirect("staffpanel")
+
+        else:
+            messages.success(request, "Incorrect username or password")
+            return redirect("staffloginpage")
+    response = render(request, "staff/staff_login_signup.html")
+    return HttpResponse(response)
