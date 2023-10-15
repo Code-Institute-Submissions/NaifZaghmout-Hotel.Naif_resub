@@ -51,5 +51,35 @@ class UserViewsTestCase(TestCase):
         )  # check if user is logged in
 
 
-        
+
+    def test_staff_login(self):
+        User.objects.create_user(
+            username=self.username, password=self.password, is_staff=True
+        )
+        response = self.client.post(
+            reverse("staffloginpage"),
+            {"username": self.username, "password": self.password},
+        )
+        self.assertEqual(
+            response.status_code, 302
+        )  # assuming it redirects to staff panel
+        self.assertIn("_auth_user_id", self.client.session)
+
+    def test_user_logout(self):
+        user = User.objects.create_user(username=self.username, password=self.password)
+        self.client.force_login(user)
+        response = self.client.get(reverse("logout"))
+        self.assertEqual(
+            response.status_code, 302
+        )  # assuming it redirects after logout
+        self.assertNotIn(
+            "_auth_user_id", self.client.session
+        )  # user should be logged out
+
+    def test_staff_log_sign_page(self):
+        response = self.client.get(reverse("staffloginpage"))
+        self.assertEqual(
+            response.status_code, 200
+        )  # should render the login/signup page for staff    
+
         
