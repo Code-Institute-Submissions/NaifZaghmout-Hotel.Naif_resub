@@ -44,3 +44,17 @@ def add_new_location(request):
 
     return HttpResponse("Not Allowed")
 
+
+
+@login_required(login_url="/staff")
+def all_bookings(request):
+    """
+    Show all bookings
+    Staff login required
+    """
+    bookings = Reservation.objects.all()
+    if not bookings:
+        messages.warning(request, "No Bookings Found")
+    return HttpResponse(
+        render(request, "staff/all_bookings.html", {"bookings": bookings})
+    )
