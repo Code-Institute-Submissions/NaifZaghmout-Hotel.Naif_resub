@@ -58,3 +58,21 @@ def all_bookings(request):
     return HttpResponse(
         render(request, "staff/all_bookings.html", {"bookings": bookings})
     )
+
+
+
+
+@login_required(login_url="/staff")
+def view_room(request):
+    """
+    View Room
+    """
+    room_id = request.GET["roomid"]
+    room = Rooms.objects.all().get(id=room_id)
+
+    reservation = Reservation.objects.all().filter(room=room)
+    return HttpResponse(
+        render(
+            request, "staff/view_room.html", {"room": room, "reservations": reservation}
+        )
+    )
