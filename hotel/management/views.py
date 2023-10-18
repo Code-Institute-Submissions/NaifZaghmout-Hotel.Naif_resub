@@ -87,10 +87,26 @@ def panel(request):
     """
     if request.user.is_staff == False:
         return HttpResponse("Access Denied")
-        
+
 
     rooms = Rooms.objects.all()
     total_rooms: int = len(rooms) if len(rooms) > 0 else 1
     available_rooms: int = len(Rooms.objects.all().filter(availability_status="1"))
     unavailable_rooms: int = len(Rooms.objects.all().filter(availability_status="2"))
     reserved: int = len(Reservation.objects.all())
+
+    hotel = Hotels.objects.values_list("hotel_location", "id").distinct().order_by()
+
+    response = render(
+        request,
+        "staff/staff_panel.html",
+        {
+            "location": hotel,
+            "reserved": reserved,
+            "rooms": rooms,
+            "total_rooms": total_rooms,
+            "available": available_rooms,
+            "unavailable": unavailable_rooms,
+        },
+    )
+    return HttpResponse(response)
