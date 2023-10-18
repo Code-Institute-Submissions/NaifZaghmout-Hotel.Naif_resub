@@ -177,3 +177,7 @@ def add_new_room(request):
         new_room.room_price = request.POST["price"]
 
         new_room.save()
+
+        messages.success(request, "New Room Added Successfully")
+
+    return redirect("staffpanel")
