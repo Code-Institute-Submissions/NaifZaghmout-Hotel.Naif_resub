@@ -157,7 +157,7 @@ def add_new_room(request):
     """
     Add new room to the list
     """
-    
+
     if request.user.is_staff == False:
         return HttpResponse("Access Denied")
     if request.method == "POST":
@@ -172,3 +172,8 @@ def add_new_room(request):
         new_room.max_capacity = int(request.POST["capacity"])
         new_room.room_size = int(request.POST["size"])
         new_room.hotel = hotel
+
+        new_room.availability_status = request.POST["status"]
+        new_room.room_price = request.POST["price"]
+
+        new_room.save()
