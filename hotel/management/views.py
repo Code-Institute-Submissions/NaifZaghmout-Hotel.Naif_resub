@@ -110,3 +110,32 @@ def panel(request):
         },
     )
     return HttpResponse(response)
+
+
+
+
+@login_required(login_url="/staff")
+def edit_room(request):
+    
+    """
+    Update the room information
+    """
+
+    if request.user.is_staff == False:
+        return HttpResponse("Access Denied")
+
+    if request.method == "POST" and request.user.is_staff:
+        print(request.POST)
+        old_room = Rooms.objects.all().get(id=int(request.POST["roomid"]))
+        hotel = Hotels.objects.all().get(id=int(request.POST["hotel"]))
+        old_room.room_type = request.POST["roomtype"]
+        old_room.max_capacity = int(request.POST["capacity"])
+        old_room.room_price = int(request.POST["price"])
+        old_room.room_size = int(request.POST["size"])
+        old_room.hotel = hotel
+        old_room.availability_status = request.POST["status"]
+        old_room.room_number = int(request.POST["roomnumber"])
+
+        old_room.save()
+        messages.success(request, "Room Details Updated Successfully")
+        return redirect("staffpanel")
