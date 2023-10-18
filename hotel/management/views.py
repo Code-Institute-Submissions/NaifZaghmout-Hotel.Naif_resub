@@ -87,3 +87,10 @@ def panel(request):
     """
     if request.user.is_staff == False:
         return HttpResponse("Access Denied")
+        
+
+    rooms = Rooms.objects.all()
+    total_rooms: int = len(rooms) if len(rooms) > 0 else 1
+    available_rooms: int = len(Rooms.objects.all().filter(availability_status="1"))
+    unavailable_rooms: int = len(Rooms.objects.all().filter(availability_status="2"))
+    reserved: int = len(Reservation.objects.all())
