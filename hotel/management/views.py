@@ -145,3 +145,30 @@ def edit_room(request):
     room = Rooms.objects.all().get(id=room_id)
     response = render(request, "staff/edit_room.html", {"room": room})
     return HttpResponse(response)
+
+
+
+
+
+
+@login_required(login_url="/staff")
+def add_new_room(request):
+
+    """
+    Add new room to the list
+    """
+    
+    if request.user.is_staff == False:
+        return HttpResponse("Access Denied")
+    if request.method == "POST":
+        total_rooms = len(Rooms.objects.all())
+        new_room = Rooms()
+        hotel = Hotels.objects.all().get(id=int(request.POST["hotel"]))
+        print(f"id={hotel.id}")
+        print(f"name={hotel.hotel_name}")
+
+        new_room.room_number = total_rooms + 1
+        new_room.room_type = request.POST["roomtype"]
+        new_room.max_capacity = int(request.POST["capacity"])
+        new_room.room_size = int(request.POST["size"])
+        new_room.hotel = hotel
