@@ -76,3 +76,14 @@ def view_room(request):
             request, "staff/view_room.html", {"room": room, "reservations": reservation}
         )
     )
+
+
+
+
+@login_required(login_url="/staff")
+def panel(request):
+    """
+    Staff Panel Page
+    """
+    if request.user.is_staff == False:
+        return HttpResponse("Access Denied")
