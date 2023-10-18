@@ -116,7 +116,7 @@ def panel(request):
 
 @login_required(login_url="/staff")
 def edit_room(request):
-    
+
     """
     Update the room information
     """
@@ -139,3 +139,9 @@ def edit_room(request):
         old_room.save()
         messages.success(request, "Room Details Updated Successfully")
         return redirect("staffpanel")
+
+
+    room_id = request.GET["roomid"]
+    room = Rooms.objects.all().get(id=room_id)
+    response = render(request, "staff/edit_room.html", {"room": room})
+    return HttpResponse(response)
