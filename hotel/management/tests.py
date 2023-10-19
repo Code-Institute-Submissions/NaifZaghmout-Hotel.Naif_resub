@@ -38,3 +38,13 @@ class StaffViewTestCase(TestCase):
         self.client.login(username="staffuser", password="testpassword")
         response = self.client.get(reverse("view_room"), {"roomid": self.room.id})
         self.assertEqual(response.status_code, 200)
+
+
+
+
+
+
+    def test_panel_with_staff_user(self):
+        self.client.login(username="staffuser", password="testpassword")
+        response = self.client.get(reverse("staffpanel"))
+        self.assertEqual(response.status_code, 200)
