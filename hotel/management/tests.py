@@ -21,3 +21,10 @@ class StaffViewTestCase(TestCase):
         )
         self.assertEqual(response.status_code, 302)
         self.assertTrue(Hotels.objects.filter(hotel_location="city2").exists())
+
+
+
+    def test_all_bookings_with_staff_user(self):
+        self.client.login(username="staffuser", password="testpassword")
+        response = self.client.get(reverse("allbookigs"))
+        self.assertEqual(response.status_code, 200)
