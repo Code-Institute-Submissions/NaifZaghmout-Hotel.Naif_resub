@@ -24,7 +24,17 @@ class StaffViewTestCase(TestCase):
 
 
 
+
     def test_all_bookings_with_staff_user(self):
         self.client.login(username="staffuser", password="testpassword")
         response = self.client.get(reverse("allbookigs"))
+        self.assertEqual(response.status_code, 200)
+
+
+
+
+
+    def test_view_room_with_staff_user(self):
+        self.client.login(username="staffuser", password="testpassword")
+        response = self.client.get(reverse("view_room"), {"roomid": self.room.id})
         self.assertEqual(response.status_code, 200)
