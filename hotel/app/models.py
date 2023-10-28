@@ -1,4 +1,3 @@
-
 """
 Database Models
 """
@@ -8,7 +7,6 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Hotels(models.Model):
-
     """
     Hotels Info
     Hotel Name, Owner Name, Location, State Country
@@ -23,15 +21,14 @@ class Hotels(models.Model):
     def __str__(self):
         return self.hotel_name
 
-        
 
-    class Rooms(models.Model):
-     """
-     Rooms in the hotel
-     Room Type
-     Room Availability
-     Maximum Capacity
-     """
+class Rooms(models.Model):
+    """
+    Rooms in the hotel
+    Room Type
+    Room Availability
+    Maximum Capacity
+    """
 
     AVAILABILITY: tuple = (
         ("1", "Available"),
@@ -56,9 +53,7 @@ class Hotels(models.Model):
         return self.hotel.hotel_name
 
 
-
 class Reservation(models.Model):
-
     """
     Reservation of the room
     """

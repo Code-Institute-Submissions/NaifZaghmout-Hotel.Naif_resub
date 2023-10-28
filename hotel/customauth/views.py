@@ -1,7 +1,3 @@
-from django.shortcuts import render
-
-# Create your views here.
-
 import datetime
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
@@ -18,13 +14,10 @@ from app.exceptions import (
 )
 
 # Create your views here.
-
 def user_sign_up(request):
-
     """
     User Sign Up page
     """
-
     if request.method != "POST":
         return HttpResponse("Access Denied")
 
@@ -52,15 +45,10 @@ def user_sign_up(request):
     return redirect("userloginpage")
 
 
-
-
-
 def staff_sign_up(request):
-
     """
     Staff Sign up page
     """
-
     if request.method != "POST":
         return HttpResponse("Access Denied")
 
@@ -85,7 +73,6 @@ def staff_sign_up(request):
     new_user.save()
     messages.success(request, " Staff Registration Successfull")
     return redirect("staffloginpage")
-
 
 
 def user_log_sign_page(request):
@@ -118,11 +105,9 @@ def user_log_sign_page(request):
 
 
 def logoutuser(request):
-
     """
     Logout user
     """
-
     if request.method != "GET":
         print("logout unsuccessfull")
         return redirect("userloginpage")
@@ -133,13 +118,10 @@ def logoutuser(request):
     return redirect("HomePage")
 
 
-
-    def staff_log_sign_page(request):
-
-     """
-     Staff login page
-     """
-     
+def staff_log_sign_page(request):
+    """
+    Staff login page
+    """
     if request.method == "POST":
         username = request.POST["username"]
         password = request.POST["password"]
@@ -155,3 +137,4 @@ def logoutuser(request):
             return redirect("staffloginpage")
     response = render(request, "staff/staff_login_signup.html")
     return HttpResponse(response)
+
