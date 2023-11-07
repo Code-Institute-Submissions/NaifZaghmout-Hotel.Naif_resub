@@ -1,4 +1,5 @@
 import datetime
+from django.shortcuts import get_object_or_404
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import messages
@@ -14,6 +15,8 @@ from app.exceptions import (
 )
 
 # Create your views here.
+
+
 def user_sign_up(request):
     """
     User Sign Up page
@@ -27,27 +30,24 @@ def user_sign_up(request):
     password2 = request.POST["password2"]
 
     if password1 != password2:
-        messages.warning(request, "Password didn't matched")
+        messages.warning(request, "Password didn't match")
         return redirect("userloginpage")
 
     try:
-        if User.objects.all().get(username=user_name):
-            messages.warning(request, "Username Not Available")
-            return redirect("userloginpage")
-    except:
-        pass
-
-    new_user = User.objects.create_user(username=user_name, password=password1)
-    new_user.is_superuser = False
-    new_user.is_staff = False
-    new_user.save()
-    messages.success(request, "Registration Successfull")
-    return redirect("userloginpage")
-
+        user = get_object_or_404(User, username=user_name)
+        messages.warning(request, "Username Not Available")
+        return redirect("userloginpage")
+    except User.DoesNotExist:
+        new_user = User.objects.create_user(username=user_name, password=password1)
+        new_user.is_superuser = False
+        new_user.is_staff = False
+        new_user.save()
+        messages.success(request, "Registration Successful")
+        return redirect("userloginpage")
 
 def staff_sign_up(request):
     """
-    Staff Sign up page
+    Staff Sign Up page
     """
     if request.method != "POST":
         return HttpResponse("Access Denied")
@@ -58,21 +58,20 @@ def staff_sign_up(request):
     password2 = request.POST["password2"]
 
     if password1 != password2:
-        messages.success(request, "Password didn't Matched")
+        messages.warning(request, "Password didn't match")
         return redirect("staffloginpage")
-    try:
-        if User.objects.all().get(username=user_name):
-            messages.warning(request, "Username Already Exist")
-            return redirect("staffloginpage")
-    except:
-        pass
 
-    new_user = User.objects.create_user(username=user_name, password=password1)
-    new_user.is_superuser = False
-    new_user.is_staff = True
-    new_user.save()
-    messages.success(request, " Staff Registration Successfull")
-    return redirect("staffloginpage")
+    try:
+        user = get_object_or_404(User, username=user_name)
+        messages.warning(request, "Username Already Exists")
+        return redirect("staffloginpage")
+    except User.DoesNotExist:
+        new_user = User.objects.create_user(username=user_name, password=password1)
+        new_user.is_superuser = False
+        new_user.is_staff = True
+        new_user.save()
+        messages.success(request, "Staff Registration Successful")
+        return redirect("staffloginpage")
 
 
 def user_log_sign_page(request):
@@ -89,18 +88,18 @@ def user_log_sign_page(request):
     user = authenticate(username=email, password=password)
     try:
         if user.is_staff:
-            messages.error(request, "Incorrect username or Password")
+            messages.error(request, "Incorrect Username or Password")
             return redirect("staffloginpage")
     except:
         pass
 
     if user is not None:
         login(request, user)
-        messages.success(request, "successful logged in")
+        messages.success(request, "Successful logged in")
         print("Login successfull")
         return redirect("HomePage")
 
-    messages.warning(request, "Incorrect username or password")
+    messages.warning(request, "Incorrect Username or Password")
     return redirect("userloginpage")
 
 
@@ -133,8 +132,10 @@ def staff_log_sign_page(request):
             return redirect("staffpanel")
 
         else:
-            messages.success(request, "Incorrect username or password")
+            messages.success(request, "Incorrect Username or Password")
             return redirect("staffloginpage")
     response = render(request, "staff/staff_login_signup.html")
     return HttpResponse(response)
+
+
 

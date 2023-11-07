@@ -106,8 +106,11 @@
                     <h2 class="h6 font-weight-bold text-center mb-4">Total Rooms</h2>
 
                     <!-- Progress bar 1 -->
-
-                    <div class="progress mx-auto" data-value={{ total_rooms|percentage:total_rooms}}>
+                    {% if total_rooms > 0 %}
+                    <div class="progress mx-auto" data-value="{{ total_rooms|percentage:total_rooms}}">
+                    {% else %}
+                    <div class="progress mx-auto" data-value="{{ total_rooms }}">
+                    {% endif %}
                         <span class="progress-left">
                                     <span class="progress-bar border-primary"></span>
                         </span>
@@ -115,7 +118,7 @@
                                     <span class="progress-bar border-primary"></span>
                         </span>
                         <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
-                            <div class="h2 font-weight-bold">{{ total_rooms}}</div>
+                            <div class="h2 font-weight-bold">{{ total_rooms }}</div>
                         </div>
                     </div>
                     <!-- END -->
@@ -129,7 +132,11 @@
                     <h2 class="h6 font-weight-bold text-center mb-4">Available Rooms</h2>
 
                     <!-- Progress bar 2 -->
-                    <div class="progress mx-auto" data-value={{ available|percentage:total_rooms}}>
+                    {% if total_rooms > 0 %}
+                    <div class="progress mx-auto" data-value="{{ available|percentage:total_rooms}}">
+                    {% else %}
+                    <div class="progress mx-auto" data-value="{{ available }}">
+                        {% endif %}
                         <span class="progress-left">
                                     <span class="progress-bar border-success"></span>
                         </span>
@@ -151,7 +158,11 @@
                     <h2 class="h6 font-weight-bold text-center mb-4">Not Available</h2>
 
                     <!-- Progress bar 3 -->
-                    <div class="progress mx-auto" data-value={{ unavailable|percentage:total_rooms}}>
+                    {% if total_rooms > 0 %}
+                    <div class="progress mx-auto" data-value="{{ unavailable|percentage:total_rooms}}">
+                    {% else %}
+                    <div class="progress mx-auto" data-value="{{ unavailable }}">
+                        {% endif %}
                         <span class="progress-left">
                                     <span class="progress-bar border-danger"></span>
                         </span>
@@ -173,7 +184,11 @@
                     <h2 class="h6 font-weight-bold text-center mb-4">Total Reservation</h2>
 
                     <!-- Progress bar 4 -->
-                    <div class="progress mx-auto" data-value={{reserved |percentage:total_rooms}}>
+                    {% if total_rooms > 0 %}
+                        <div class="progress mx-auto" data-value="{{reserved |percentage:total_rooms}}">
+                    {% else %}
+                        <div class="progress mx-auto" data-value="{{ reserved }}">
+                    {% endif %}
                         <span class="progress-left">
                                     <span class="progress-bar border-warning"></span>
                         </span>
@@ -316,10 +331,9 @@
                                 <div class="form-group">
                                     <label for="email">Room Type:</label>
                                     <select class="form-control" name="roomtype" id="roomtype">
-                                        
-                                        <option value="1">Premium</option>
-                                        <option value="2">Deluxe</option>
-                                        <option value="3">Basic</option>
+                                        <option value="1">Suite</option>
+                                        <option value="2">Penthouse</option>
+                                        <option value="3">Quad Bedroom</option>
                                     </select>
                                 </div>
                                 <div class="form-group">

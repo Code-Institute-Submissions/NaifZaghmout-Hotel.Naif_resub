@@ -16,7 +16,7 @@
                     <input type="text" class="form-control " id="location" name="location" disabled value={{room.hotel.hotel_location}}>
                 </div>
                 <div class="form-group">
-                    <label for="person">username:</label>
+                    <label for="person">Username:</label>
                     <input type="text" class="form-control " id="username" name="username" required="true" value={{request.user}}>
                 </div>
                 <div class="form-group">
@@ -24,7 +24,7 @@
                     <input type="number" class="form-control " id="person" name="person" min="1" max={{room.max_capacity}} required="true" value={{room.max_capacity}}>
                 </div>
                 <div class="form-group">
-                    <label for="password2">Check-in:</label>
+                    <label for="password2">Check-In:</label>
                     <input type="date" class="form-control " id="cin" min={%todays_date%} max={% max_date %} placeholder="check in " name="check_in" required="True">
                 </div>
                 <div class="form-group">

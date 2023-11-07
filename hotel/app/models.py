@@ -50,7 +50,8 @@ class Rooms(models.Model):
     room_number = models.IntegerField()
 
     def __str__(self):
-        return self.hotel.hotel_name
+        # return self.hotel.hotel_name
+        return f"Room {self.room_number} at {self.hotel.hotel_name}"
 
 
 class Reservation(models.Model):
@@ -67,3 +68,22 @@ class Reservation(models.Model):
 
     def __str__(self):
         return self.guest.username
+
+
+
+
+
+
+class ContactMessage(models.Model):
+    
+    """
+    Contact Message
+    """
+
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name

@@ -1,7 +1,4 @@
 from django.shortcuts import render
-
-# Create your views here.
-
 import datetime
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
@@ -68,7 +65,7 @@ def view_room(request):
     View Room
     """
     room_id = request.GET["roomid"]
-    room = Rooms.objects.all().get(id=room_id)
+    room = get_object_or_404(Rooms, id=rooms_id)
 
     reservation = Reservation.objects.all().filter(room=room)
     return HttpResponse(
@@ -90,7 +87,7 @@ def panel(request):
 
 
     rooms = Rooms.objects.all()
-    total_rooms: int = len(rooms) if len(rooms) > 0 else 1
+    total_rooms = rooms.count()
     available_rooms: int = len(Rooms.objects.all().filter(availability_status="1"))
     unavailable_rooms: int = len(Rooms.objects.all().filter(availability_status="2"))
     reserved: int = len(Reservation.objects.all())
@@ -142,7 +139,7 @@ def edit_room(request):
 
 
     room_id = request.GET["roomid"]
-    room = Rooms.objects.all().get(id=room_id)
+    room = get_object_or_404(Rooms, id=rooms_id)
     response = render(request, "staff/edit_room.html", {"room": room})
     return HttpResponse(response)
 
@@ -161,7 +158,7 @@ def add_new_room(request):
     if request.user.is_staff == False:
         return HttpResponse("Access Denied")
     if request.method == "POST":
-        total_rooms = len(Rooms.objects.all())
+        total_rooms = Rooms.objects.count()
         new_room = Rooms()
         hotel = Hotels.objects.all().get(id=int(request.POST["hotel"]))
         print(f"id={hotel.id}")

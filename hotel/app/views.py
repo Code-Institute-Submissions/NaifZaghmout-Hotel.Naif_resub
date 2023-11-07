@@ -2,7 +2,7 @@
 Views of the website
 """
 import datetime
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -77,10 +77,20 @@ def about_us(request):
 
 
 def contact(request):
+    
     """
     Contact page
     """
-    return HttpResponse(render(request, "contact.html"))
+
+    confirmation_message = None
+
+    if request.method == 'POST':
+        confirmation_message = "Your message has been sent. Thank you!"
+        messages.success(request, "Your message has been sent. Thank you!")
+
+    return render(request, 'contact.html', {'confirmation_message': confirmation_message})
+
+    
 
 
 
@@ -90,7 +100,9 @@ def book_room_page(request):
     """
     Book page
     """
-    room = Rooms.objects.all().get(id=int(request.GET["roomid"]))
+    room_id = int(request.GET["roomid"])
+    room = get_object_or_404(Rooms, id=room_id)
+
     return HttpResponse(render(request, "user/book_room.html", {"room": room}))
 
 
@@ -103,8 +115,14 @@ def book_room(request):
         return HttpResponse("Access Denied")
 
     room_id = request.POST["room_id"]
+    reservation.save()
 
-    room = Rooms.objects.all().get(id=room_id)
+    messages.success(request, "Congratulations! Booking Successful")
+
+    return redirect("HomePage")
+
+    
+    room = get_object_or_404(Rooms, id=rooms_id)
     # for finding the reserved rooms on this time period for excluding from the query set
     for each_reservation in Reservation.objects.all().filter(room=room):
         if str(each_reservation.check_in_date) < str(request.POST["check_in"]) and str(
@@ -116,13 +134,13 @@ def book_room(request):
         ) and str(each_reservation.check_out_date) > str(request.POST["check_out"]):
             pass
         else:
-            messages.warning(request, "Sorry This Room is unavailable for Booking")
+            messages.warning(request, "Sorry This Room Is Unavailable For Booking")
             return redirect("HomePage")
 
     current_user = request.user
 
     reservation = Reservation()
-    room_object = Rooms.objects.all().get(id=room_id)
+    room = get_object_or_404(Rooms, id=rooms_id)
     room_object.availability_status = "2"
 
     user_object = User.objects.all().get(username=current_user)
@@ -154,7 +172,7 @@ def user_bookings(request):
     """
     if request.user.is_authenticated == False:
         return redirect("userloginpage")
-    user = User.objects.all().get(id=request.user.id)
+    user = get_object_or_404(User, id=request.user.id)
     print(f"request user id ={request.user.id}")
     bookings = Reservation.objects.all().filter(guest=user)
     if not bookings:

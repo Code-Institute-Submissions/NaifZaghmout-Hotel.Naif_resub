@@ -18,4 +18,27 @@
         <span class="contact-icon" style="margin-right: 10px;font-size: 1.5em;"></span> <p>Address: 123 Pal Street, North ville, 12345</p>
     </div>
 </div>
+
+<div class="container" style="background-color: #ffc107; padding: 20px; border-radius: 5px;">
+    <h2 style="margin-bottom: 20px;">Send Us a Message</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    {% if confirmation_message %}
+    <p class="text-success">{{ confirmation_message }}</p>
+    {% endif %}
+</div>
 {% endblock body %}
