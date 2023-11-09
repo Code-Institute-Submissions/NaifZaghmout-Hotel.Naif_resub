@@ -152,10 +152,10 @@ This project is built using Python, Django, HTML, JavaScript, and Bootstrap, ens
 * How bug solved:
 
 
-- In the 'home' view function, I needed to correct the logic that checks room availability. I was using a list of room reservations, but we needed to check each reservation to see if it overlapped with the user's requested check-in and check-out dates.
+ - In the 'home' view function, I needed to correct the logic that checks room availability. I was using a list of room reservations, but we needed to check each reservation to see if it overlapped with the user's requested check-in and check-out dates.
 
 
-- for each_reservation in Reservation.objects.all():
+ - for each_reservation in Reservation.objects.all():
     if (
         each_reservation.check_in_date < request.POST["cin"]
         and each_reservation.check_out_date < request.POST["cout"]
@@ -169,10 +169,10 @@ This project is built using Python, Django, HTML, JavaScript, and Bootstrap, ens
     else:
         room_reservations.append(each_reservation.room.id)
 
-- Once I identified reserved rooms, I used the exclude method to exclude them from the query set of available rooms.
+ - Once I identified reserved rooms, I used the exclude method to exclude them from the query set of available rooms.
 
 
-- rooms = (
+ - rooms = (
     Rooms.objects.all()
     .filter(
         hotel=hotels, max_capacity=int(request.POST["capacity"])
@@ -180,7 +180,7 @@ This project is built using Python, Django, HTML, JavaScript, and Bootstrap, ens
     .exclude(id__in=room_reservations)
 )
 
-- By applying these changes to the code, I fixed the bug that was causing incorrect room availability to be displayed. Users now see accurate room availability based on their requested check-in and check-out dates.
+ - By applying these changes to the code, I fixed the bug that was causing incorrect room availability to be displayed. Users now see accurate room availability based on their requested check-in and check-out dates.
 
 
 
@@ -193,21 +193,21 @@ This project is built using Python, Django, HTML, JavaScript, and Bootstrap, ens
 * How bug solved:
 
 
-- In the 'edit_room' view function, I identified the issue in the code that updates the room details. The problem was that the wrong variable names were being used in the code.
+ - In the 'edit_room' view function, I identified the issue in the code that updates the room details. The problem was that the wrong variable names were being used in the code.
 
 
-- old_room = Rooms.objects.all().get(id=int(request.POST["roomid"]))
-hotel = Hotels.objects.all().get(id=int(request.POST["hotel"]))
+ - old_room = Rooms.objects.all().get(id=int(request.POST["roomid"]))
+   hotel = Hotels.objects.all().get(id=int(request.POST["hotel"]))
 
 
-- These lines should be changed to use the correct variable names:
+ - These lines should be changed to use the correct variable names:
 
 
-- old_room = Rooms.objects.all().get(id=int(request.POST["room_id"]))
-hotel = Hotels.objects.all().get(id=int(request.POST["hotel"]))
+ - old_room = Rooms.objects.all().get(id=int(request.POST["room_id"]))
+   hotel = Hotels.objects.all().get(id=int(request.POST["hotel"]))
 
 
-- By making these changes to the code, I fixed the bug that was causing incorrect room edits on the staff panel. Staff members can now successfully update room details, and the changes are saved as expected.
+ - By making these changes to the code, I fixed the bug that was causing incorrect room edits on the staff panel. Staff members can now successfully update room details, and the changes are saved as expected.
 
 
 
