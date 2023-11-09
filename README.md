@@ -146,16 +146,18 @@ This project is built using Python, Django, HTML, JavaScript, and Bootstrap, ens
 #### Bugs 
 
 
-1. Bug Description: There was an issue with incorrect room availability being displayed to users. The bug caused rooms to be shown as available even when they were already reserved.
+1. **Bug Description:** There was an issue with incorrect room availability being displayed to users. The bug caused rooms to be shown as available even when they were already reserved.
 
 
-* How bug solved:
+
+* **How bug solved:**
 
 
- - In the 'home' view function, I needed to correct the logic that checks room availability. I was using a list of room reservations, but we needed to check each reservation to see if it overlapped with the user's requested check-in and check-out dates.
 
+  - In the **'home'** view function, I needed to correct the logic that checks room availability. I was using a list of room reservations, but we needed to check each reservation to see if it overlapped with the user's requested check-in and check-out dates.
 
- - for each_reservation in Reservation.objects.all():
+ 
+   - `for each_reservation in Reservation.objects.all():
     if (
         each_reservation.check_in_date < request.POST["cin"]
         and each_reservation.check_out_date < request.POST["cout"]
@@ -167,47 +169,52 @@ This project is built using Python, Django, HTML, JavaScript, and Bootstrap, ens
     ):
         pass
     else:
-        room_reservations.append(each_reservation.room.id)
+        room_reservations.append(each_reservation.room.id)`
+        
 
- - Once I identified reserved rooms, I used the exclude method to exclude them from the query set of available rooms.
+   - Once I identified reserved rooms, I used the exclude method to exclude them from the query set of      available rooms.
 
 
- - rooms = (
+ 
+   - `rooms = (
     Rooms.objects.all()
     .filter(
         hotel=hotels, max_capacity=int(request.POST["capacity"])
     )
-    .exclude(id__in=room_reservations)
-)
+    .exclude(id__in=room_reservations))`
 
- - By applying these changes to the code, I fixed the bug that was causing incorrect room availability to be displayed. Users now see accurate room availability based on their requested check-in and check-out dates.
-
+   - By applying these changes to the code, I fixed the bug that was causing incorrect room availability to be displayed. Users now see accurate room availability based on their requested check-in and check-out dates.
 
 
 
 
-2. Bug Description: There was an issue with editing room details on the staff panel. The bug caused the changes made to room details not to be saved.
+
+
+2. **Bug Description:** There was an issue with editing room details on the staff panel. The bug caused the changes made to room details not to be saved.
 
 
 
-* How bug solved:
+
+* **How bug solved:**
 
 
- - In the 'edit_room' view function, I identified the issue in the code that updates the room details. The problem was that the wrong variable names were being used in the code.
+
+  - In the **'edit_room'** view function, I identified the issue in the code that updates the room details. 
+    The problem was that the wrong variable names were being used in the code.
 
 
- - old_room = Rooms.objects.all().get(id=int(request.POST["roomid"]))
-   hotel = Hotels.objects.all().get(id=int(request.POST["hotel"]))
+  - `old_room = Rooms.objects.all().get(id=int(request.POST["roomid"]))
+   hotel = Hotels.objects.all().get(id=int(request.POST["hotel"]))`
 
 
- - These lines should be changed to use the correct variable names:
+  - These lines should be changed to use the correct variable names:
 
 
- - old_room = Rooms.objects.all().get(id=int(request.POST["room_id"]))
-   hotel = Hotels.objects.all().get(id=int(request.POST["hotel"]))
+  -  `old_room = Rooms.objects.all().get(id=int(request.POST["room_id"]))
+    hotel = Hotels.objects.all().get(id=int(request.POST["hotel"]))`
 
 
- - By making these changes to the code, I fixed the bug that was causing incorrect room edits on the staff panel. Staff members can now successfully update room details, and the changes are saved as expected.
+  - By making these changes to the code, I fixed the bug that was causing incorrect room edits on the staff panel. Staff members can now successfully update room details, and the changes are saved as expected.
 
 
 
