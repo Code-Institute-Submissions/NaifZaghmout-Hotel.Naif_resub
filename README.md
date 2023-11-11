@@ -267,6 +267,69 @@ This project is built using Python, Django, HTML, JavaScript, and Bootstrap, ens
 
 
 
+3. **Bug Description:** Attempting to sign up as a user and staff member does not work, and the application does not successfully create new accounts.
+
+
+
+
+
+
+
+* **How bug solved:**
+
+
+
+
+
+  - The issue lies in the **signup** code for both **users** and **staff**. The code was incorrectly checking for the existence of a user using 'get_object_or_404(user, username=user_name)'. This approach is incorrect and can lead to issues.
+
+
+
+  - Changes Made:
+
+    1 For User Signup:
+
+    Removed the incorrect check for user existence.
+    Used User.objects.create_user to create a new user.
+
+'try:
+    user = User.objects.get(username=user_name)
+    messages.warning(request, "Username Not Available")
+    return redirect("userloginpage")
+except User.DoesNotExist:
+    new_user = User.objects.create_user(username=user_name, password=password1)
+    new_user.is_superuser = False
+    new_user.is_staff = False
+    new_user.save()
+    messages.success(request, "Registration Successful")
+    return redirect("userloginpage")'
+
+
+
+    2 For Staff Signup:
+
+    Removed the incorrect check for user existence.
+    Used User.objects.create_user with is_staff set to True for staff accounts.
+
+'try:
+    user = User.objects.get(username=user_name)
+    messages.warning(request, "Username Already Exists")
+    return redirect("staffloginpage")
+except User.DoesNotExist:
+    new_user = User.objects.create_user(username=user_name, password=password1)
+    new_user.is_superuser = False
+    new_user.is_staff = True
+    new_user.save()
+    messages.success(request, "Staff Registration Successful")
+    return redirect("staffloginpage")'
+
+
+
+
+
+
+
+
 #### Remaining Bugs
 
 - None 
