@@ -34,10 +34,11 @@ def user_sign_up(request):
         return redirect("userloginpage")
 
     try:
-        user = get_object_or_404(User, username=user_name)
-        messages.warning(request, "Username Not Available")
-        return redirect("userloginpage")
+     user = User.objects.get(username=user_name)
+     messages.warning(request, "Username Not Available")
+     return redirect("userloginpage")
     except User.DoesNotExist:
+
         new_user = User.objects.create_user(username=user_name, password=password1)
         new_user.is_superuser = False
         new_user.is_staff = False
@@ -62,10 +63,11 @@ def staff_sign_up(request):
         return redirect("staffloginpage")
 
     try:
-        user = get_object_or_404(User, username=user_name)
-        messages.warning(request, "Username Already Exists")
-        return redirect("staffloginpage")
+     user = User.objects.get(username=user_name)
+     messages.warning(request, "Username Already Exists")
+     return redirect("staffloginpage")
     except User.DoesNotExist:
+
         new_user = User.objects.create_user(username=user_name, password=password1)
         new_user.is_superuser = False
         new_user.is_staff = True
@@ -86,12 +88,12 @@ def user_log_sign_page(request):
     password = request.POST["pswd"]
 
     user = authenticate(username=email, password=password)
-    try:
-        if user.is_staff:
-            messages.error(request, "Incorrect Username or Password")
-            return redirect("staffloginpage")
-    except:
-        pass
+    user = authenticate(username=email, password=password)
+    if user is not None and user.is_staff:
+     messages.error(request, "Incorrect Username or Password")
+     return redirect("staffloginpage")
+
+
 
     if user is not None:
         login(request, user)

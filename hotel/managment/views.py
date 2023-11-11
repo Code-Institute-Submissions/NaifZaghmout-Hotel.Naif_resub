@@ -1,5 +1,6 @@
 from django.shortcuts import render
 import datetime
+from django.shortcuts import get_object_or_404
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import messages
@@ -65,7 +66,7 @@ def view_room(request):
     View Room
     """
     room_id = request.GET["roomid"]
-    room = get_object_or_404(Rooms, id=rooms_id)
+    room = get_object_or_404(Rooms, id=room_id)
 
     reservation = Reservation.objects.all().filter(room=room)
     return HttpResponse(
@@ -139,7 +140,7 @@ def edit_room(request):
 
 
     room_id = request.GET["roomid"]
-    room = get_object_or_404(Rooms, id=rooms_id)
+    room = get_object_or_404(Rooms, id=room_id)
     response = render(request, "staff/edit_room.html", {"room": room})
     return HttpResponse(response)
 

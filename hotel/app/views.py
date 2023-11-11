@@ -122,7 +122,7 @@ def book_room(request):
     return redirect("HomePage")
 
     
-    room = get_object_or_404(Rooms, id=rooms_id)
+    room = get_object_or_404(Rooms, id=room_id)
     # for finding the reserved rooms on this time period for excluding from the query set
     for each_reservation in Reservation.objects.all().filter(room=room):
         if str(each_reservation.check_in_date) < str(request.POST["check_in"]) and str(
@@ -140,7 +140,7 @@ def book_room(request):
     current_user = request.user
 
     reservation = Reservation()
-    room = get_object_or_404(Rooms, id=rooms_id)
+    room = get_object_or_404(Rooms, id=room_id)
     room_object.availability_status = "2"
 
     user_object = User.objects.all().get(username=current_user)

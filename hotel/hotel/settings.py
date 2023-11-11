@@ -33,7 +33,7 @@ ALLOWED_HOSTS = ["*"]
 
 CSRF_TRUSTED_ORIGINS = ["https://8000-naifzaghmout-hotelnaif-4wtzj6di9yj.ws-us106.gitpod.io"]
 
-# Application definition
+# Application definitionCSRF_TRUSTED_ORIGINS
 
 INSTALLED_APPS = [
     "django.contrib.admin",
