@@ -287,16 +287,22 @@ This project is built using Python, Django, HTML, JavaScript, and Bootstrap, ens
 
   - Changes Made:
 
-    1 For User Signup:
 
-    Removed the incorrect check for user existence.
-    Used User.objects.create_user to create a new user.
+    1. For User Signup:
 
-'try:
+
+
+    - Removed the incorrect check for user existence.
+    - Used User.objects.create_user to create a new user.
+
+
+
+
+    - 'try:
     user = User.objects.get(username=user_name)
     messages.warning(request, "Username Not Available")
     return redirect("userloginpage")
-except User.DoesNotExist:
+    except User.DoesNotExist:
     new_user = User.objects.create_user(username=user_name, password=password1)
     new_user.is_superuser = False
     new_user.is_staff = False
@@ -306,16 +312,23 @@ except User.DoesNotExist:
 
 
 
-    2 For Staff Signup:
 
-    Removed the incorrect check for user existence.
-    Used User.objects.create_user with is_staff set to True for staff accounts.
+   2. For Staff Signup:
 
-'try:
+
+
+
+   -  Removed the incorrect check for user existence.
+   -  Used User.objects.create_user with is_staff set to True for staff accounts.
+
+
+
+
+    - 'try:
     user = User.objects.get(username=user_name)
     messages.warning(request, "Username Already Exists")
     return redirect("staffloginpage")
-except User.DoesNotExist:
+    except User.DoesNotExist:
     new_user = User.objects.create_user(username=user_name, password=password1)
     new_user.is_superuser = False
     new_user.is_staff = True
