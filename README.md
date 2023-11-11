@@ -68,12 +68,31 @@ This project is built using Python, Django, HTML, JavaScript, and Bootstrap, ens
 
 #### As a User, you can:
 
-- Sign up and log in to your account.
+- Easily navigate through the website using the intuitive navbar, featuring options like About Us, 
+  Contact, and Hotel-Naif (Home).
+- Sign up and login to your account.
+
+    - Nav Bar and Sign up , login :
+    ![Nav Bar and Sign up , login ](assets/images/navbar.png)
+
+
 - Choose your check-in and check-out dates.
 - Specify the number of guests.
 - Check room availability based on your preferences.
+
+
+    - choose a date / Number of guests / Location /  availability :
+    ![Booking dates, number of guests, availability](assets/images/book-room.png)
+
+
+
 - Browse different types of rooms, each with its own features and pricing.
 - Easily book a room.
+ 
+
+    - Book Your Room :
+    ![Book your room]()
+
 
 
 #### About Us Page
@@ -81,12 +100,23 @@ This project is built using Python, Django, HTML, JavaScript, and Bootstrap, ens
 - Explore information about our hotel and team.
 - Learn more about the people behind the scenes and our vision.
 
+    - About-Us page :
+    ![About-Us page](assets/images/about-us.png)
+
 
 
 #### Contact Us Page
 - Contact the hotel easily through the "Contact Us" page.
 - Send us a message using the contact form.
 - Find our contact details for alternative communication.
+
+
+    - Contact Us Form :
+    ![Contact Us Form](assets/images/contact-form.png)
+
+
+    - Contact details :
+    ![Contact details](assets/images/contact-info.png)
 
 
 
@@ -119,6 +149,8 @@ This project is built using Python, Django, HTML, JavaScript, and Bootstrap, ens
 - Allowed Guests: Max 3 persons
 - Amenities: Free Wifi, TV, Private Bathroom, Hair Dryer
 - Nearby: Cinema, Restaurants, Shopping Mall, Sea View
+  
+    ![Quad Room](assets/images/quad-room.png)
 
 2. Penthouse
 - Price: $100/day
@@ -127,12 +159,16 @@ This project is built using Python, Django, HTML, JavaScript, and Bootstrap, ens
 - Amenities: Free Wifi, TV, Private Bathroom, Hair Dryer
 - Nearby: Cinema, Restaurants, Shopping Mall, Sea View
 
+    ![Penthouse](assets/images/penthouse.png)
+
 3. Suite
 - Price: $200/day
 - Size: 400 ft
 - Allowed Guests: Max 5 persons
 - Amenities: Free Wifi, TV, Private Bathroom, Hair Dryer
 - Nearby: Cinema, Restaurants, Shopping Mall, Sea View
+
+    ![Suite](assets/images/suite.png)
 
 
 
@@ -146,11 +182,14 @@ This project is built using Python, Django, HTML, JavaScript, and Bootstrap, ens
 #### Bugs 
 
 
+
 1. **Bug Description:** There was an issue with incorrect room availability being displayed to users. The bug caused rooms to be shown as available even when they were already reserved.
 
 
 
+
 * **How bug solved:**
+
 
 
 
@@ -190,12 +229,18 @@ This project is built using Python, Django, HTML, JavaScript, and Bootstrap, ens
 
 
 
+
+
 2. **Bug Description:** There was an issue with editing room details on the staff panel. The bug caused the changes made to room details not to be saved.
 
 
 
 
+
+
 * **How bug solved:**
+
+
 
 
 
@@ -215,6 +260,8 @@ This project is built using Python, Django, HTML, JavaScript, and Bootstrap, ens
 
 
   - By making these changes to the code, I fixed the bug that was causing incorrect room edits on the staff panel. Staff members can now successfully update room details, and the changes are saved as expected.
+
+
 
 
 

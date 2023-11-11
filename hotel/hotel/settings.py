@@ -31,7 +31,7 @@ SECRET_KEY= os.environ.get("SECRET_KEY")
 DEBUG = os.environ.get("DEBUG") == "True"
 ALLOWED_HOSTS = ["*"]
 
-CSRF_TRUSTED_ORIGINS = ["https://8000-naifzaghmout-hotelnaif-4wtzj6di9yj.ws-us105.gitpod.io"]
+CSRF_TRUSTED_ORIGINS = ["https://8000-naifzaghmout-hotelnaif-4wtzj6di9yj.ws-us106.gitpod.io"]
 
 # Application definition
 
