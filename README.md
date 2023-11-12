@@ -66,6 +66,8 @@ This project is built using Python, Django, HTML, JavaScript, and Bootstrap, ens
 
 ## User Features
 
+
+
 #### As a User, you can:
 
 - Easily navigate through the website using the intuitive navbar, featuring options like About Us, 
@@ -91,7 +93,7 @@ This project is built using Python, Django, HTML, JavaScript, and Bootstrap, ens
  
 
     - Book Your Room :
-    ![Book your room]()
+    ![Book your room](assets/images/pick-room.png)
 
 
 
@@ -128,10 +130,41 @@ This project is built using Python, Django, HTML, JavaScript, and Bootstrap, ens
 
 - Login to your staff account.
 - Secure staff login with authentication.
-- Staff members can create accounts via a user-friendly signup process.
+- Staff members can create accounts via a user-friendly signup process.  
+
+
+
+    - Staff Login (Admin Panel) :
+    ![staff login](assets/images/staff-login.png)
+
+
+
+
+    - Staff Signup / Login :
+    ![Staff Signup](assets/images/staff.png)
+
+
+
+
+
 - Manage reservations and room availability.
 - Add or remove new rooms and locations.
+
+
+
+    - Manage reservations / Add rooms and Locations :
+    ![Manage reservations / Add rooms and Locations](assets/images/manage-rooms.png)
+
+
+
+
+
 - Add new rooms with room types, capacity, price, and availability status.
+
+
+
+    - Add new rooms :
+    1[Add new rooms](assets/images/add-new-room.png)
 
 
 
@@ -288,53 +321,55 @@ This project is built using Python, Django, HTML, JavaScript, and Bootstrap, ens
   - Changes Made:
 
 
-    1. For User Signup:
+1. For User Signup:
 
 
 
-    - Removed the incorrect check for user existence.
-    - Used User.objects.create_user to create a new user.
+  - Removed the incorrect check for user existence.
+  - Used **User.objects.create_user** to create a new user.
 
 
 
 
-    - 'try:
-    user = User.objects.get(username=user_name)
-    messages.warning(request, "Username Not Available")
-    return redirect("userloginpage")
+  -  'try:
+         user = User.objects.get(username=user_name)
+         messages.warning(request, "Username Not Available")
+         return redirect("userloginpage")
+      except User.DoesNotExist:
+         new_user = User.objects.create_user(username=user_name, password=password1)
+         new_user.is_superuser = False
+         new_user.is_staff = False
+         new_user.save()
+         messages.success(request, "Registration Successful")
+         return redirect("userloginpage")'
+
+
+
+
+
+2. For Staff Signup:
+
+
+
+
+  -  Removed the incorrect check for user existence.
+  -  Used User.objects.create_user with is_staff set to True for staff accounts.
+
+
+
+
+  -  'try:
+        user = User.objects.get(username=user_name)
+        messages.warning(request, "Username Already Exists")
+        return redirect("staffloginpage")
     except User.DoesNotExist:
-    new_user = User.objects.create_user(username=user_name, password=password1)
-    new_user.is_superuser = False
-    new_user.is_staff = False
-    new_user.save()
-    messages.success(request, "Registration Successful")
-    return redirect("userloginpage")'
+        new_user = User.objects.create_user(username=user_name, password=password1)
+        new_user.is_superuser = False
+        new_user.is_staff = True
+        new_user.save()
+        messages.success(request, "Staff Registration Successful")
+        return redirect("staffloginpage")'
 
-
-
-
-   2. For Staff Signup:
-
-
-
-
-   -  Removed the incorrect check for user existence.
-   -  Used User.objects.create_user with is_staff set to True for staff accounts.
-
-
-
-
-    - 'try:
-    user = User.objects.get(username=user_name)
-    messages.warning(request, "Username Already Exists")
-    return redirect("staffloginpage")
-    except User.DoesNotExist:
-    new_user = User.objects.create_user(username=user_name, password=password1)
-    new_user.is_superuser = False
-    new_user.is_staff = True
-    new_user.save()
-    messages.success(request, "Staff Registration Successful")
-    return redirect("staffloginpage")'
 
 
 
