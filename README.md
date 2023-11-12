@@ -377,7 +377,6 @@ This project is built using Python, Django, HTML, JavaScript, and Bootstrap, ens
 
 
 
-
 #### Remaining Bugs
 
 - None 
@@ -393,3 +392,83 @@ This project is built using Python, Django, HTML, JavaScript, and Bootstrap, ens
 
 
 
+## Data Model
+
+
+
+### Hotels
+
+- `hotel_name` (CharField): Name of the hotel.
+- `hotel_owner` (CharField): Owner of the hotel.
+- `hotel_location` (CharField): Location of the hotel.
+- `hotel_state` (CharField): State of the hotel.
+- `hotel_country` (CharField): Country of the hotel.
+
+
+
+### Rooms
+
+- `room_type` (CharField): Type of the room (choices: Suite, Penthouse, Quad Bedroom).
+- `max_capacity` (IntegerField): Maximum capacity of the room.
+- `room_price` (IntegerField): Price of the room.
+- `room_size` (IntegerField): Size of the room.
+- `hotel` (ForeignKey to Hotels): Reference to the hotel to which the room belongs.
+- `availability_status` (CharField): Availability status of the room (choices: Available, Not Available).
+- `room_number` (IntegerField): Number of the room.
+
+
+
+### Reservation
+
+- `check_in_date` (DateField): Check-in date of the reservation.
+- `check_out_date` (DateField): Check-out date of the reservation.
+- `room` (ForeignKey to Rooms): Reference to the reserved room.
+- `guest` (ForeignKey to User): Reference to the guest making the reservation.
+- `booking_id` (CharField): Unique identifier for the booking.
+
+
+
+### ContactMessage
+
+- `name` (CharField): Name of the person sending the message.
+- `email` (EmailField): Email address of the person sending the message.
+- `message` (TextField): Content of the message.
+
+
+
+### User
+
+- Standard Django User model for authentication.
+
+
+
+
+
+
+
+--------------------------------------------------------------------------------
+
+
+
+
+
+## Credits
+
+
+- [getform.com](https://getform.com/): The "Send Us a Message" form code was adapted from [getform.com](https://blog.getform.io/how-to-create-an-html-form-that-sends-you-an-email/).
+
+- [Coding for All | Newton School](https://www.youtube.com/watch?v=kG0tw2QBqjE): Valuable insights and ideas about the booking system were obtained from the "Coding for All" tutorial on YouTube by Newton School.
+
+- [Medium](https://medium.com/@great4christ2009/building-hotel-management-system-in-django-6ce524200ac4): Additional information and concepts related to the hotel management system were explored on Medium.
+
+- These resources played a significant role in shaping the development of Hotel-Naif.
+
+
+
+
+-------------------------------------------------------------------------------------------
+
+
+
+
+## Deployment
