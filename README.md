@@ -74,8 +74,11 @@ This project is built using Python, Django, HTML, JavaScript, and Bootstrap, ens
   Contact, and Hotel-Naif (Home).
 - Sign up and login to your account.
 
+
     - Nav Bar and Sign up , login :
-    ![Nav Bar and Sign up , login ](assets/images/navbar.png)
+
+    - ![Nav Bar and Sign up , login ](assets/images/navbar.png)
+
 
 
 - Choose your check-in and check-out dates.
@@ -83,8 +86,11 @@ This project is built using Python, Django, HTML, JavaScript, and Bootstrap, ens
 - Check room availability based on your preferences.
 
 
+
     - choose a date / Number of guests / Location /  availability :
-    ![Booking dates, number of guests, availability](assets/images/book-room.png)
+
+    - ![Booking dates, number of guests, availability](assets/images/book-room.png)
+
 
 
 
@@ -92,8 +98,10 @@ This project is built using Python, Django, HTML, JavaScript, and Bootstrap, ens
 - Easily book a room.
  
 
+
     - Book Your Room :
-    ![Book your room](assets/images/pick-room.png)
+
+    - ![Book your room](assets/images/pick-room.png)
 
 
 
@@ -102,8 +110,11 @@ This project is built using Python, Django, HTML, JavaScript, and Bootstrap, ens
 - Explore information about our hotel and team.
 - Learn more about the people behind the scenes and our vision.
 
+
     - About-Us page :
-    ![About-Us page](assets/images/about-us.png)
+
+    - ![About-Us page](assets/images/about-us.png)
+
 
 
 
@@ -113,12 +124,16 @@ This project is built using Python, Django, HTML, JavaScript, and Bootstrap, ens
 - Find our contact details for alternative communication.
 
 
+
     - Contact Us Form :
-    ![Contact Us Form](assets/images/contact-form.png)
+
+    - ![Contact Us Form](assets/images/contact-form.png)
+
 
 
     - Contact details :
-    ![Contact details](assets/images/contact-info.png)
+
+    - ![Contact details](assets/images/contact-info.png)
 
 
 
@@ -135,13 +150,15 @@ This project is built using Python, Django, HTML, JavaScript, and Bootstrap, ens
 
 
     - Staff Login (Admin Panel) :
-    ![staff login](assets/images/staff-login.png)
+
+    - ![staff login](assets/images/staff-login.png)
 
 
 
 
     - Staff Signup / Login :
-    ![Staff Signup](assets/images/staff.png)
+
+    - ![Staff Signup](assets/images/staff.png)
 
 
 
@@ -153,7 +170,8 @@ This project is built using Python, Django, HTML, JavaScript, and Bootstrap, ens
 
 
     - Manage reservations / Add rooms and Locations :
-    ![Manage reservations / Add rooms and Locations](assets/images/manage-rooms.png)
+
+    - ![Manage reservations / Add rooms and Locations](assets/images/manage-rooms.png)
 
 
 
@@ -164,7 +182,8 @@ This project is built using Python, Django, HTML, JavaScript, and Bootstrap, ens
 
 
     - Add new rooms :
-    ![Add new rooms](assets/images/add-new-room.png)
+
+    - ![Add new rooms](assets/images/add-new-room.png)
 
 
 
@@ -183,7 +202,7 @@ This project is built using Python, Django, HTML, JavaScript, and Bootstrap, ens
 - Amenities: Free Wifi, TV, Private Bathroom, Hair Dryer
 - Nearby: Cinema, Restaurants, Shopping Mall, Sea View
   
-    ![Quad Room](assets/images/quad-room.png)
+    - ![Quad Room](assets/images/quad-room.png)
 
 2. Penthouse
 - Price: $100/day
@@ -192,7 +211,7 @@ This project is built using Python, Django, HTML, JavaScript, and Bootstrap, ens
 - Amenities: Free Wifi, TV, Private Bathroom, Hair Dryer
 - Nearby: Cinema, Restaurants, Shopping Mall, Sea View
 
-    ![Penthouse](assets/images/penthouse.png)
+    - ![Penthouse](assets/images/penthouse.png)
 
 3. Suite
 - Price: $200/day
@@ -201,7 +220,7 @@ This project is built using Python, Django, HTML, JavaScript, and Bootstrap, ens
 - Amenities: Free Wifi, TV, Private Bathroom, Hair Dryer
 - Nearby: Cinema, Restaurants, Shopping Mall, Sea View
 
-    ![Suite](assets/images/suite.png)
+    - ![Suite](assets/images/suite.png)
 
 
 
@@ -355,7 +374,7 @@ except User.DoesNotExist:
 
 
   -  Removed the incorrect check for user existence.
-  -  Used User.objects.create_user with is_staff set to True for staff accounts.
+  -  Used **User.objects.create_user** with is_staff set to True for staff accounts.
 
 
 
@@ -469,6 +488,28 @@ except User.DoesNotExist:
 
 
 -------------------------------------------------------------------------------------------
+
+
+
+
+## Testing
+
+
+- To run the tests for this project, execute the following commands : **python manage.py test**
+
+  - [Testing](assets/images/testing.png)
+
+
+
+  -----------------------------------------------------------------------------------------------
+
+
+  ## Live Demo
+
+ - Check out the live demo []()
+
+
+------------------------------------------------------------------------------------------------
 
 
 
