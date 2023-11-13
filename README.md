@@ -164,7 +164,7 @@ This project is built using Python, Django, HTML, JavaScript, and Bootstrap, ens
 
 
     - Add new rooms :
-    1[Add new rooms](assets/images/add-new-room.png)
+    ![Add new rooms](assets/images/add-new-room.png)
 
 
 
@@ -314,7 +314,7 @@ This project is built using Python, Django, HTML, JavaScript, and Bootstrap, ens
 
 
 
-  - The issue lies in the **signup** code for both **users** and **staff**. The code was incorrectly checking for the existence of a user using 'get_object_or_404(user, username=user_name)'. This approach is incorrect and can lead to issues.
+  - The issue lies in the **signup** code for both **users** and **staff**. The code was incorrectly checking for the existence of a user using `get_object_or_404(user, username=user_name)`. This approach is incorrect and can lead to issues.
 
 
 
@@ -331,17 +331,19 @@ This project is built using Python, Django, HTML, JavaScript, and Bootstrap, ens
 
 
 
-  -  'try:
-         user = User.objects.get(username=user_name)
-         messages.warning(request, "Username Not Available")
-         return redirect("userloginpage")
-      except User.DoesNotExist:
-         new_user = User.objects.create_user(username=user_name, password=password1)
-         new_user.is_superuser = False
-         new_user.is_staff = False
-         new_user.save()
-         messages.success(request, "Registration Successful")
-         return redirect("userloginpage")'
+
+- `try:
+    user = User.objects.get(username=user_name)
+    messages.warning(request, "Username Not Available")
+    return redirect("userloginpage")
+except User.DoesNotExist:
+    new_user = User.objects.create_user(username=user_name, password=password1)
+    new_user.is_superuser = False
+    new_user.is_staff = False
+    new_user.save()
+    messages.success(request, "Registration Successful")
+    return redirect("userloginpage")`
+
 
 
 
@@ -358,7 +360,7 @@ This project is built using Python, Django, HTML, JavaScript, and Bootstrap, ens
 
 
 
-  -  'try:
+  - `try:
         user = User.objects.get(username=user_name)
         messages.warning(request, "Username Already Exists")
         return redirect("staffloginpage")
@@ -368,7 +370,7 @@ This project is built using Python, Django, HTML, JavaScript, and Bootstrap, ens
         new_user.is_staff = True
         new_user.save()
         messages.success(request, "Staff Registration Successful")
-        return redirect("staffloginpage")'
+        return redirect("staffloginpage")`
 
 
 

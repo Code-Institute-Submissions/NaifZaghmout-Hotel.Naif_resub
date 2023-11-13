@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "booking website"
+name = "Hotel-Naif"
 version = "0.1.0"
 description = ""
 authors = ["NaifZaghmout zaghmout <naif-zaghmout@hotmail.com>"]
