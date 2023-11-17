@@ -491,13 +491,7 @@ except User.DoesNotExist:
 
 
 
-
-## Testing
-
-
-- To run the tests for this project, execute the following commands : **python manage.py test**
-
-  - [Testing](assets/images/testing.png)
+#  Please refer to the **TESTING.md** file for all test-related documentation.
 
 
 
