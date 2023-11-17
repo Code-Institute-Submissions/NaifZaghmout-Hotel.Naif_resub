@@ -15,6 +15,8 @@ from pathlib import Path
 
 if os.path.exists("env.py"):
     import env
+    
+    
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,13 +27,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY= os.environ.get("SECRET_KEY")
+SECRET_KEY= ("django-insecure-^n^b=b-ksit5(96g=4(52!l2v*%6@!@a6^+yq!ibiwp%oepkrw")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG") == "True"
+DEBUG = "True"
+
 ALLOWED_HOSTS = ["*"]
 
-CSRF_TRUSTED_ORIGINS = ["https://8000-naifzaghmout-hotelnaif-4wtzj6di9yj.ws-us106.gitpod.io"]
+CSRF_TRUSTED_ORIGINS = ["https://hotel-naif.onrender.com"]
+
 
 # Application definitionCSRF_TRUSTED_ORIGINS
 
