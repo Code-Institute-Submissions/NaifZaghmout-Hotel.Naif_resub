@@ -108,9 +108,51 @@
 
 
 
-
+# Automated testing
 
 
 - To run the tests for this project, execute the following commands : **python manage.py test**
 
   - [Testing](assets/images/testing.png)
+
+
+
+
+
+
+# Validation
+
+## HTML Validation:
+
+- HTML validation was done by using the official W3C validator. This checking was done manually by copying the view page source code (Ctrl+U) and pasting it into the validator.
+
+
+
+
+
+
+## CSS Validation:
+
+- No errors or warnings were found when passing through the official W3C (Jigsaw) validator.
+
+
+
+
+
+
+
+
+
+
+
+## Python Validation:
+
+- 
+
+
+
+
+
+# Lighthouse Report
+
+
