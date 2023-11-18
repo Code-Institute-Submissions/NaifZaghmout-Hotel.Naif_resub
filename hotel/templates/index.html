@@ -2,62 +2,73 @@
 {% block title %}Hotel Naif
 {% endblock title %}
 {% block body %}
+
+
 <style>
     .table-container {
-        padding: 20px; /* Add padding from left and right */
+        padding: 20px;
+        /* Add padding from left and right */
     }
+
     .img-container {
         display: flex;
         justify-content: space-between;
     }
+
     .img-container img {
-        width: 100%; /* Make all images the same size and responsive */
+        width: 100%;
+        /* Make all images the same size and responsive */
         max-width: 100%;
         height: auto;
     }
 </style>
- <!--Booking Section starts here-->
+</head>
+<!--Booking Section starts here-->
 <section>
     <div class="container-fluid py-5 px-5 ">
         <form action="" method="POST">
-        {% csrf_token %}
-        <div class="row justify-content-center py-5 bg-light">
-            <div class="col-lg-4">
-                <label for="">Location</label>
-                <select class="form-control" name="search_location" id="roomstatus">
-                    <!--Hotel id and location-->
-                    <option>Location</option>
-                    {% for each_location,each_hotel_id in all_location %}
-                        
-                        <option value={{each_hotel_id}}>{{each_location}}</option>
-                    {% endfor %}    
-                    
-                    
-                        
-                </select>
-            </div>
-            {%load app_tags%}
-            <div class="col-lg-2">
-                <label for="">Check in</label>
-                <input class="form-control mr-sm-2" type="date" placeholder="Check in" name="cin" min={%todays_date%} max={% max_date %} aria-label="Search" required="True">
-            </div>
-            <div class="col-lg-2">
-                <label for="">Check Out</label>
-                <input class="form-control mr-sm-2" type="date" placeholder="Check out" name="cout" min={%tommorow%} max={% max_date%} aria-label="Search" required="True">
-            </div>
-            <div class="col-lg-2">
-                <label for="">Person</label>
-                <input class="form-control mr-sm-2" type="number" placeholder="Person" name="capacity" aria-label="Search" required="True">
-            </div>
-            <div class="col-lg-2">
+            {% csrf_token %}
+            <div class="row justify-content-center py-5 bg-light">
+                <div class="col-lg-4">
+                    <label>Location</label>
+                    <select class="form-control" name="search_location" id="roomstatus">
+                        <!--Hotel id and location-->
+                        <option>Location</option>
+                        {% for each_location,each_hotel_id in all_location %}
 
-                <input type="submit" value="Check Availabilty" class="form-control mr-sm-2 btn btn-primary my-4" style="position: relative;top: 7px;">
+                        <option value={{each_hotel_id}}>{{each_location}}</option>
+                        {% endfor %}
+
+
+
+                    </select>
+                </div>
+                {%load app_tags%}
+                <div class="col-lg-2">
+                    <label>Check in</label>
+                    <input class="form-control mr-sm-2" type="date" placeholder="Check in" name="cin"
+                        min={%todays_date%} max={% max_date %} aria-label="Search" required="True">
+                </div>
+                <div class="col-lg-2">
+                    <label>Check Out</label>
+                    <input class="form-control mr-sm-2" type="date" placeholder="Check out" name="cout" min={%tommorow%}
+                        max={% max_date%} aria-label="Search" required="True">
+                </div>
+                <div class="col-lg-2">
+                    <label>Person</label>
+                    <input class="form-control mr-sm-2" type="number" placeholder="Person" name="capacity"
+                        aria-label="Search" required="True">
+                </div>
+                <div class="col-lg-2">
+
+                    <input type="submit" value="Check Availabilty" class="form-control mr-sm-2 btn btn-primary my-4"
+                        style="position: relative;top: 7px;">
+                </div>
+                {% if rooms %}
+                <p class="text-center text-success">Rooms Available</p>
+                {% endif %}
+
             </div>
-            {% if rooms %}
-            <p class="text-center text-success">Rooms Available</p>
-            {% endif %}
-            
-        </div>
         </form>
 
     </div>
@@ -66,8 +77,8 @@
 <!--Fetched reults appear here-->
 <div class="container-fluid px-0 mx-aut">
     {% if rooms %}
-       <table class="table">
-           <thead class="o">
+    <table class="table">
+        <thead class="o">
             <th>Type</th>
             <th>Location</th>
             <th>Person</th>
@@ -75,17 +86,17 @@
             <th>Action</th>
         </thead>
         {% for r in rooms %}
-            <tr class="">
+        <tr>
             <td>{{ r.get_room_type_display }}</td>
             <td>{{ r.hotel.location }}</td>
             <td>{{ r.capacity }}</td>
             <td>{{ r.price }}</td>
-            
+
             <td><a href="/user/book-room?roomid={{r.id}}"><button class="btn btn-warning">Book Now</button></a></td>
-            </tr>
+        </tr>
         {% endfor %}
-        
-       </table> 
+
+    </table>
     {% endif %}
 </div>
 <!--Fetched results ends here-->
@@ -108,19 +119,22 @@
                     <p>Price: $55/day</p>
                     <p>Size: 30 ft</p>
                     <p>Allowed Guests: Max person 3</p>
-                    <p>Amenities:  Free Wifi , TV , Private Bathroom , Hair Dryer</p>
+                    <p>Amenities: Free Wifi , TV , Private Bathroom , Hair Dryer</p>
                     <p>Near By: Cinema , Restaurants , Shopping Mall , Sea View</p>
                 </td>
                 <td>
                     <div class="img-container">
                         <div class="col-4">
-                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-970005752681461666/original/1cbad6a0-b5d6-4e38-9d0f-ef81e1a6f3bb.jpeg?im_w=1200" alt="" class="img-fluid">
+                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-970005752681461666/original/1cbad6a0-b5d6-4e38-9d0f-ef81e1a6f3bb.jpeg?im_w=1200"
+                                alt="" class="img-fluid">
                         </div>
                         <div class="col-4">
-                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-970005752681461666/original/b957fa23-55d2-47a8-b38f-178e04fadf65.jpeg?im_w=1200" alt="" class="img-fluid">
+                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-970005752681461666/original/b957fa23-55d2-47a8-b38f-178e04fadf65.jpeg?im_w=1200"
+                                alt="" class="img-fluid">
                         </div>
                         <div class="col-4">
-                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-970005752681461666/original/1a2ea7d0-da57-4089-831c-6e1f091a9e5e.jpeg?im_w=1200" alt="" class="img-fluid">
+                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-970005752681461666/original/1a2ea7d0-da57-4089-831c-6e1f091a9e5e.jpeg?im_w=1200"
+                                alt="" class="img-fluid">
                         </div>
                     </div>
                 </td>
@@ -131,19 +145,22 @@
                     <p>Price: $100/day</p>
                     <p>Size: 250 ft</p>
                     <p>Allowed Guests: Max person 3</p>
-                    <p>Amenities:  Free Wifi , TV , Private Bathroom , Hair Dryer</p>
+                    <p>Amenities: Free Wifi , TV , Private Bathroom , Hair Dryer</p>
                     <p>Near By: Cinema , Restaurants , Shopping Mall , Sea View</p>
                 </td>
                 <td>
                     <div class="img-container">
                         <div class="col-4">
-                            <img src="https://a0.muscache.com/im/pictures/c387d81a-2ebd-4837-a325-6720e78ddf44.jpg?im_w=1200" alt="" class="img-fluid">
+                            <img src="https://a0.muscache.com/im/pictures/c387d81a-2ebd-4837-a325-6720e78ddf44.jpg?im_w=1200"
+                                alt="" class="img-fluid">
                         </div>
                         <div class="col-4">
-                            <img src="https://a0.muscache.com/im/pictures/c05c4fd4-9c52-4ebd-b740-5ff03b9897a2.jpg?im_w=1200" alt="" class="img-fluid">
+                            <img src="https://a0.muscache.com/im/pictures/c05c4fd4-9c52-4ebd-b740-5ff03b9897a2.jpg?im_w=1200"
+                                alt="" class="img-fluid">
                         </div>
                         <div class="col-4">
-                            <img src="https://a0.muscache.com/im/pictures/6f144c6c-dc3d-489c-8899-773d9be67a3f.jpg?im_w=1200" alt="" class="img-fluid">
+                            <img src="https://a0.muscache.com/im/pictures/6f144c6c-dc3d-489c-8899-773d9be67a3f.jpg?im_w=1200"
+                                alt="" class="img-fluid">
                         </div>
                     </div>
                 </td>
@@ -154,19 +171,22 @@
                     <p>Price: $200/day</p>
                     <p>Size: 400 ft</p>
                     <p>Allowed Guests: Max person 5 </p>
-                    <p>Amenities:  Free Wifi , TV , Private Bathroom , Hair Dryer</p>
+                    <p>Amenities: Free Wifi , TV , Private Bathroom , Hair Dryer</p>
                     <p>Near By: Cinema , Restaurants , Shopping Mall , Sea View</p>
                 </td>
                 <td>
                     <div class="img-container">
                         <div class="col-4">
-                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-667312619440112805/original/07d96351-be9a-4c0c-a5fa-5c74d4fe2a50.jpeg?im_w=1200" alt="" class="img-fluid">
+                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-667312619440112805/original/07d96351-be9a-4c0c-a5fa-5c74d4fe2a50.jpeg?im_w=1200"
+                                alt="" class="img-fluid">
                         </div>
                         <div class="col-4">
-                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-667312619440112805/original/a547e183-4c1e-4a61-9e85-eb6055d298e1.jpeg?im_w=1200" alt="" class="img-fluid">
+                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-667312619440112805/original/a547e183-4c1e-4a61-9e85-eb6055d298e1.jpeg?im_w=1200"
+                                alt="" class="img-fluid">
                         </div>
                         <div class="col-4">
-                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-667312619440112805/original/f68d03d5-b0e2-4455-a107-f1de267d5ce9.jpeg?im_w=1200" alt="" class="img-fluid">
+                            <img src="https://a0.muscache.com/im/pictures/miso/Hosting-667312619440112805/original/f68d03d5-b0e2-4455-a107-f1de267d5ce9.jpeg?im_w=1200"
+                                alt="" class="img-fluid">
                         </div>
                     </div>
                 </td>
@@ -178,4 +198,3 @@
 
 
 {% endblock body %}
-

@@ -1,4 +1,5 @@
 {% extends 'basic.html' %} {% block title %}Book Room {% endblock title %} {% block body %}
+
 <div class="container">
 
     <div class="row">
@@ -9,35 +10,43 @@
                 {%load app_tags%}
                 <div class="form-group">
                     <label for="username">Hotel:</label>
-                    <input type="text" class="form-control " id="hotel" name="hotel" disabled value={{room.hotel.hotel_name}}>
+                    <input type="text" class="form-control " id="hotel" name="hotel" disabled
+                        value={{room.hotel.hotel_name}}>
                 </div>
                 <div class="form-group">
                     <label for="username">Location:</label>
-                    <input type="text" class="form-control " id="location" name="location" disabled value={{room.hotel.hotel_location}}>
+                    <input type="text" class="form-control " id="location" name="location" disabled
+                        value={{room.hotel.hotel_location}}>
                 </div>
                 <div class="form-group">
                     <label for="person">Username:</label>
-                    <input type="text" class="form-control " id="username" name="username" required="true" value={{request.user}}>
+                    <input type="text" class="form-control " id="username" name="username" required="true"
+                        value={{request.user}}>
                 </div>
                 <div class="form-group">
                     <label for="person">Person:</label>
-                    <input type="number" class="form-control " id="person" name="person" min="1" max={{room.max_capacity}} required="true" value={{room.max_capacity}}>
+                    <input type="number" class="form-control " id="person" name="person" min="1"
+                        max={{room.max_capacity}} required="true" value={{room.max_capacity}}>
                 </div>
                 <div class="form-group">
                     <label for="password2">Check-In:</label>
-                    <input type="date" class="form-control " id="cin" min={%todays_date%} max={% max_date %} placeholder="check in " name="check_in" required="True">
+                    <input type="date" class="form-control " id="cin" min={%todays_date%} max={% max_date %}
+                        placeholder="check in " name="check_in" required="True">
                 </div>
                 <div class="form-group">
                     <label for="password2">Check-Out:</label>
-                    <input type="date" class="form-control " id="cout" min={%tommorow%} max={% max_date%} placeholder="check out " name="check_out" required="True">
+                    <input type="date" class="form-control " id="cout" min={%tommorow%} max={% max_date%}
+                        placeholder="check out " name="check_out" required="True">
                 </div>
                 <div class="form-group">
                     <label for="username">Room Type:</label>
-                    <input type="text" class="form-control " id="roomtype" name="roomtype" disabled value={{room.get_room_type_display}}>
+                    <input type="text" class="form-control " id="roomtype" name="roomtype" disabled
+                        value={{room.get_room_type_display}}>
                 </div>
                 <div class="form-group">
                     <label for="password2">Price:</label>
-                    <input type="number" class="form-control " id="price" placeholder="price " name="price" disabled value={{room.room_price}}>
+                    <input type="number" class="form-control " id="price" placeholder="price " name="price" disabled
+                        value={{room.room_price}}>
                 </div>
 
 

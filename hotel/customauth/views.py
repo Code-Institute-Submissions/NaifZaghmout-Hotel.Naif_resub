@@ -93,8 +93,6 @@ def user_log_sign_page(request):
      messages.error(request, "Incorrect Username or Password")
      return redirect("staffloginpage")
 
-
-
     if user is not None:
         login(request, user)
         messages.success(request, "Successful logged in")
@@ -138,6 +136,3 @@ def staff_log_sign_page(request):
             return redirect("staffloginpage")
     response = render(request, "staff/staff_login_signup.html")
     return HttpResponse(response)
-
-
-

@@ -1,4 +1,6 @@
 {% extends 'basic.html' %} {% block title %}View Room {% endblock title %} {% block body %}
+
+
 <h3 class="text-success"> Details</h3>
 <hr>
 <div class="container mx-0 ">
@@ -17,10 +19,12 @@
 <h3 class="text-success">Bookings :-</h3>
 <table class="table">
     <thead>
-        <th>Username</th>
-        <th>Person</th>
-        <th>check in</th>
-        <th>check out</th>
+        <tr>
+            <th>Username</th>
+            <th>Person</th>
+            <th>check in</th>
+            <th>check out</th>
+        </tr>
     </thead>
     {% for each_detail in reservations %}
     <tr>

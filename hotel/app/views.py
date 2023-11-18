@@ -36,8 +36,10 @@ def home(request):
             id=int(float(request.POST["search_location"]))
         )
         room_reservations: list = []
-
-        # for finding the reserved rooms on this time period for excluding from the query set
+        """
+        for finding the reserved rooms on this time period
+        for excluding from the query set
+        """
         for each_reservation in Reservation.objects.all():
             if str(each_reservation.check_in_date) < str(request.POST["cin"]) and str(
                 each_reservation.check_out_date
@@ -77,7 +79,7 @@ def about_us(request):
 
 
 def contact(request):
-    
+
     """
     Contact page
     """
@@ -89,10 +91,6 @@ def contact(request):
         messages.success(request, "Your message has been sent. Thank you!")
 
     return render(request, 'contact.html', {'confirmation_message': confirmation_message})
-
-    
-
-
 
 
 @login_required(login_url="/user")
@@ -121,7 +119,7 @@ def book_room(request):
 
     return redirect("HomePage")
 
-    
+
     room = get_object_or_404(Rooms, id=room_id)
     # for finding the reserved rooms on this time period for excluding from the query set
     for each_reservation in Reservation.objects.all().filter(room=room):
@@ -180,5 +178,3 @@ def user_bookings(request):
     return HttpResponse(
         render(request, "user/my_bookings.html", {"bookings": bookings})
     )
-
-

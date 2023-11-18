@@ -70,12 +70,8 @@ class Reservation(models.Model):
         return self.guest.username
 
 
-
-
-
-
 class ContactMessage(models.Model):
-    
+
     """
     Contact Message
     """
@@ -87,3 +83,4 @@ class ContactMessage(models.Model):
 
     def __str__(self):
         return self.name
+        

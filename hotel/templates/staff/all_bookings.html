@@ -2,16 +2,20 @@
 {% block title %}All Bookings
 {% endblock title %}
 {% block body %}
+
+
 <h3 class="text-center  text-success">All Bookings </h3>
 <table class="table">
     <thead>
-        <th>User</th>
-        <th>Room</th>
-        <th>Location</th>
-        <th>Person</th>
-        <th>Check in</th>
-        <th>Check out</th>
-        <th>Price</th>
+        <tr>
+            <th>User</th>
+            <th>Room</th>
+            <th>Location</th>
+            <th>Person</th>
+            <th>Check in</th>
+            <th>Check out</th>
+            <th>Price</th>
+        </tr>
     </thead>
     {% for each_booking in bookings %}
     <tr>

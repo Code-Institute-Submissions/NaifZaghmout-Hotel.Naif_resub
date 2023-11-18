@@ -15,6 +15,8 @@ from app.exceptions import (
     IncorrectCredentials,
 )
 # Create your views here.
+
+
 @login_required(login_url="/staff")
 def add_new_location(request):
     """
@@ -43,7 +45,6 @@ def add_new_location(request):
     return HttpResponse("Not Allowed")
 
 
-
 @login_required(login_url="/staff")
 def all_bookings(request):
     """
@@ -56,8 +57,6 @@ def all_bookings(request):
     return HttpResponse(
         render(request, "staff/all_bookings.html", {"bookings": bookings})
     )
-
-
 
 
 @login_required(login_url="/staff")
@@ -76,8 +75,6 @@ def view_room(request):
     )
 
 
-
-
 @login_required(login_url="/staff")
 def panel(request):
     """
@@ -85,7 +82,6 @@ def panel(request):
     """
     if request.user.is_staff == False:
         return HttpResponse("Access Denied")
-
 
     rooms = Rooms.objects.all()
     total_rooms = rooms.count()
@@ -108,8 +104,6 @@ def panel(request):
         },
     )
     return HttpResponse(response)
-
-
 
 
 @login_required(login_url="/staff")
@@ -143,10 +137,6 @@ def edit_room(request):
     room = get_object_or_404(Rooms, id=room_id)
     response = render(request, "staff/edit_room.html", {"room": room})
     return HttpResponse(response)
-
-
-
-
 
 
 @login_required(login_url="/staff")

@@ -15,8 +15,6 @@ from pathlib import Path
 
 if os.path.exists("env.py"):
     import env
-    
-    
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -34,7 +32,7 @@ DEBUG = "True"
 
 ALLOWED_HOSTS = ["*"]
 
-CSRF_TRUSTED_ORIGINS = ["https://hotel-naif.onrender.com"]
+CSRF_TRUSTED_ORIGINS = ["https://8000-naifzaghmout-hotelnaif-3cpxgoqqdsg.ws-us106.gitpod.io"]
 
 
 # Application definitionCSRF_TRUSTED_ORIGINS
