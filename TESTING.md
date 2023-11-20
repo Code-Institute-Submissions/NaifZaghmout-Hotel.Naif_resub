@@ -120,7 +120,7 @@
 
 - To run the tests for this project, execute the following commands : **python manage.py test**
 
-  - [Testing](assets/images/testing.png)
+- ![Testing](assets/images/testing.png)
 
 
 
