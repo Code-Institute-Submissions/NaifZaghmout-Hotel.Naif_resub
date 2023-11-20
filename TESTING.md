@@ -1,7 +1,10 @@
 
 # Testing
 
+
+
 ## Manual Testing
+
 
 ### Navigation Bar
 
@@ -108,6 +111,10 @@
 
 
 
+
+
+
+
 # Automated testing
 
 
@@ -120,20 +127,20 @@
 
 
 
+
+
 # Validation
-
-## HTML Validation:
-
-- HTML validation was done by using the official W3C validator. This checking was done manually by copying the view page source code (Ctrl+U) and pasting it into the validator.
-
-
 
 
 
 
 ## CSS Validation:
 
-- No errors or warnings were found when passing through the official W3C (Jigsaw) validator.
+- No errors or warnings were found when passing through the official [W3C](https://jigsaw.w3.org/css-validator/#validate_by_input) validator.
+
+- ![CSS](assets/images/index-css-v.png)
+
+- ![CSS](assets/images/edit-room-css-v.png)
 
 
 
@@ -147,12 +154,36 @@
 
 ## Python Validation:
 
-- 
+- Python Validation was done by using [PEP8 CI](https://pep8ci.herokuapp.com/#)
+
+- **You may encounter linter warnings about lines of code exceeding the recommended maximum length. These long lines are intentionally kept for better code readability and structure. They do not affect the functionality or correctness of the code. Modifying them might compromise the clarity of the code, and, therefore, they are left as is.**
+
+
+- ![python - 1](assets/images/view.v.png)
+- ![python - 2](assets/images/test.v.png)
+- ![python - 3](assets/images/urls-v.png)
+- ![python - 4](assets/images/test2.v.png)
+- ![python - 5](assets/images/models-v.png)
+- ![python - 6](assets/images/app-_tags-v.png)
+- ![python - 7](assets/images/exceptions-v.png)
+- ![python - 8](assets/images/view-cuostmauth-v.png)
+- ![python - 9](assets/images/managment-view-v.png)
+- ![python - 10](assets/images/setting-hotel-v.png)
+- ![python - 11](assets/images/app-view-v.png)
+- ![python - 12](assets/images/models-app-v.png)
+
+
+
+
+
+
 
 
 
 
 
 # Lighthouse Report
+
+- ![Lighthouse](assets/images/lighthouse.png)
 
 
