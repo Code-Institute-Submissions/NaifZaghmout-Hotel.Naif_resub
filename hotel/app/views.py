@@ -119,9 +119,11 @@ def book_room(request):
 
     return redirect("HomePage")
 
-
     room = get_object_or_404(Rooms, id=room_id)
-    # for finding the reserved rooms on this time period for excluding from the query set
+    """
+    for finding the reserved rooms on this time period
+    for excluding from the query set
+    """
     for each_reservation in Reservation.objects.all().filter(room=room):
         if str(each_reservation.check_in_date) < str(request.POST["check_in"]) and str(
             each_reservation.check_out_date
@@ -132,7 +134,7 @@ def book_room(request):
         ) and str(each_reservation.check_out_date) > str(request.POST["check_out"]):
             pass
         else:
-            messages.warning(request, "Sorry This Room Is Unavailable For Booking")
+            messages.warning(request, "Sorry This Room Is Unavailable")
             return redirect("HomePage")
 
     current_user = request.user
@@ -168,13 +170,15 @@ def user_bookings(request):
     """
     Book the room
     """
-    if request.user.is_authenticated == False:
+    if not request.user.is_authenticated:
         return redirect("userloginpage")
+
     user = get_object_or_404(User, id=request.user.id)
-    print(f"request user id ={request.user.id}")
-    bookings = Reservation.objects.all().filter(guest=user)
+    print(f"request user id = {request.user.id}")
+
+    bookings = Reservation.objects.filter(guest=user)
+
     if not bookings:
         messages.warning(request, "No Bookings Found")
-    return HttpResponse(
-        render(request, "user/my_bookings.html", {"bookings": bookings})
-    )
+
+    return render(request, "user/my_bookings.html", {"bookings": bookings})
