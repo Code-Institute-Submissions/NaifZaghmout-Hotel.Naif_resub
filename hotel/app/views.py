@@ -106,54 +106,38 @@ def book_room_page(request):
 
 @login_required(login_url="/user")
 def book_room(request):
-    """
-    Booking of the room
-    """
     if request.method != "POST":
         return HttpResponse("Access Denied")
 
     room_id = request.POST["room_id"]
-    reservation.save()
-
-    messages.success(request, "Congratulations! Booking Successful")
-
-    return redirect("HomePage")
 
     room = get_object_or_404(Rooms, id=room_id)
-    """
-    for finding the reserved rooms on this time period
-    for excluding from the query set
-    """
     for each_reservation in Reservation.objects.all().filter(room=room):
-        if str(each_reservation.check_in_date) < str(request.POST["check_in"]) and str(
-            each_reservation.check_out_date
-        ) < str(request.POST["check_out"]):
-            pass
-        elif str(each_reservation.check_in_date) > str(
-            request.POST["check_in"]
-        ) and str(each_reservation.check_out_date) > str(request.POST["check_out"]):
+        if (
+            str(each_reservation.check_in_date) < str(request.POST["check_in"])
+            and str(each_reservation.check_out_date) < str(request.POST["check_out"])
+        ) or (
+            str(each_reservation.check_in_date) > str(request.POST["check_in"])
+            and str(each_reservation.check_out_date) > str(request.POST["check_out"])
+        ):
             pass
         else:
             messages.warning(request, "Sorry This Room Is Unavailable")
             return redirect("HomePage")
 
-    current_user = request.user
-
     reservation = Reservation()
-    room = get_object_or_404(Rooms, id=room_id)
-    room_object.availability_status = "2"
+    room.availability_status = "2"
+    room.save()
 
+    current_user = request.user
     user_object = User.objects.all().get(username=current_user)
-
     reservation.guest = user_object
-    reservation.room = room_object
-
+    reservation.room = room
     reservation.check_in_date = request.POST["check_in"]
     reservation.check_out_date = request.POST["check_out"]
 
     reservation.save()
-
-    messages.success(request, "Congratulations! Booking Successfull")
+    messages.success(request, "Congratulations! Booking Successful")
 
     return redirect("HomePage")
 
