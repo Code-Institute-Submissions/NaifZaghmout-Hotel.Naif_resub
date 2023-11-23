@@ -515,38 +515,38 @@ except User.DoesNotExist:
 - This project was successfully deployed using [Render](https://render.com).
 
 
-### Prerequisites
+#### Prerequisites
 
 1. Ensure you have a Render account. If not, sign up at [Render](https://render.com).
 
 
-### Deployment Steps
+#### Deployment Steps
 
 
-# 1. Clone the Repository
+1. Clone the Repository
 
 - git clone` https://github.com/NaifZaghmout/Hotel.Naif.git` && cd hotel
 
 
-# 2. Install Dependencies
+2. Install Dependencies
 
 - pip install -r requirements.txt
 
 
-# 3. Start the Application
+3. Start the Application
 
 - gunicorn Hotel.Naif.wsgi:application
 
 
 
-# 4. Configure Environment Variables on Render
+4. Configure Environment Variables on Render
 
 - When setting up your Render service, go to "Advanced" settings and add necessary environment variables.
 - For example, database connection strings, API keys, or other configuration values.
 
 
 
-# 5. Deploy the Service
+5. Deploy the Service
 
 - Click "Create Web Service" in the Render dashboard to deploy your application.
 - Choose the appropriate branch to deploy, select the environment, and set the build command to 'pip install -r requirements.txt'.
@@ -555,7 +555,7 @@ except User.DoesNotExist:
 
 
 
-# 6. Access Your Deployed App
+6. Access Your Deployed App
 
 - Once deployed, Render will provide a URL to access your live application.
 - You can find the live version [here](https://hotel-naif.onrender.com).
