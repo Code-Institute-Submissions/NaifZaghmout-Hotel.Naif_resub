@@ -6,7 +6,7 @@
 
 ## Description
 
-[Hotel-Naif]() is a modern hotel booking and reservation website that provides users with a seamless experience for reserving rooms in a hotel. It offers a user-friendly interface with features like user sign-up, login, room selection, booking .
+[Hotel-Naif](https://hotel-naif.onrender.com) is a modern hotel booking and reservation website that provides users with a seamless experience for reserving rooms in a hotel. It offers a user-friendly interface with features like user sign-up, login, room selection, booking .
 Staff members have access to a management panel where they can oversee reservations, add or remove rooms, and control room availability.
 This project is built using Python, Django, HTML, JavaScript, and Bootstrap, ensuring a reliable and responsive web application. With a focus on a hassle-free booking experience, Hotel-Naif caters to both users and staff members, simplifying the hotel reservation process.
 
@@ -500,7 +500,7 @@ except User.DoesNotExist:
 
   ## Live Demo
 
- - Check out the live demo []()
+ - Check out the live demo [Live Demo](https://hotel-naif.onrender.com)
 
 
 ------------------------------------------------------------------------------------------------
@@ -508,4 +508,54 @@ except User.DoesNotExist:
 
 
 
+
+
 ## Deployment
+
+- This project was successfully deployed using [Render](https://render.com).
+
+
+### Prerequisites
+
+1. Ensure you have a Render account. If not, sign up at [Render](https://render.com).
+
+
+### Deployment Steps
+
+
+# 1. Clone the Repository
+
+- git clone` https://github.com/NaifZaghmout/Hotel.Naif.git` && cd hotel
+
+
+# 2. Install Dependencies
+
+- pip install -r requirements.txt
+
+
+# 3. Start the Application
+
+- gunicorn Hotel.Naif.wsgi:application
+
+
+
+# 4. Configure Environment Variables on Render
+
+- When setting up your Render service, go to "Advanced" settings and add necessary environment variables.
+- For example, database connection strings, API keys, or other configuration values.
+
+
+
+# 5. Deploy the Service
+
+- Click "Create Web Service" in the Render dashboard to deploy your application.
+- Choose the appropriate branch to deploy, select the environment, and set the build command to 'pip install -r requirements.txt'.
+- Set the start command to 'gunicorn Hotel.Naif.wsgi:application'.
+- Select the Free plan and click on "Advanced" settings to add environment variables if needed.
+
+
+
+# 6. Access Your Deployed App
+
+- Once deployed, Render will provide a URL to access your live application.
+- You can find the live version [here](https://hotel-naif.onrender.com).
