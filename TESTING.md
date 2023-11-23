@@ -132,24 +132,24 @@
 | User Actions | Expected Results | Y/N | Comments |
 | ------------ | ----------------- | --- | -------- |
 | **Sign Up**   |                   |     |          |
-| 1. Click on Login button | Redirected to Login & Sign Up form | Y | ![Sign Up Image](assets/images/user-singup-test.png) |
-| 2. Enter valid username | Field only accepts valid username | Y | ![Username Image](image_url) |
-| 3. Enter valid password | Field only accepts valid passwords | Y | ![Password Image](image_url) |
-| 4. Enter valid password confirmation | It has to be the same as the entered password | Y | ![Password Confirmation Image](image_url) |
+| 1. Click on Login button | Redirected to Login & Sign Up form | Y |                            |
+| 2. Enter valid username | Field only accepts valid username | Y |                              |
+| 3. Enter valid password | Field only accepts valid passwords | Y |                             |
+| 4. Enter valid password confirmation | It has to be the same as the entered password | Y |     |
 | 6. Click on the Sign Up button | Confirmation message for successful signup it will take you to Login Page | Y | ![Signup Confirmation Image](assets/images/singup-massage-test.png) |
 | 7. Click "Logout" in the navbar | Takes user to the home page, showing a logout message | Y | ![Logout Image](assets/images/logout-test.png) |
 | **Log In**   |                   |     |          |
 | 1. Click on Login button | Redirected to Login page | Y | ![Login Image](assets/images/login-test.png) |
-| 2. Enter valid username | Field only accepts valid username | Y | ![Username Image](image_url) |
-| 3. Enter valid password | Field only accepts valid passwords | Y | ![Password Image](image_url) |
+| 2. Enter valid username | Field only accepts valid username | Y |                                      |
+| 3. Enter valid password | Field only accepts valid passwords | Y |                                     |
 | 4. Click on the Login button | Confirmation message for successful login | Y | ![Login Confirmation Image](assets/images/user-login-massage-test.png) |
 | 5. Click "Logout" in the navbar | Takes user to the home page, showing a logout message | Y | ![Logout Image](assets/images/logout-test.png) |
 | **Navbar**   |                   |     |          |
 | 1. Click "Naif-Hotel" | Redirected to the home page | Y | ![Naif-Hotel Image](assets/images/navbar-naif-hotel-test.png) |
 | 2. Click "About Us" | Redirected to the About Us page | Y | ![About Us Image](assets/images/navbar-aboutus-test.png) |
-| 3. Click "Contact" | Redirected to the Contact page with contact info and a message form | Y | ![Contact Image](assets/images/navbar-contact-test.png) |
+| 3. Click "Contact" | Redirected to the Contact page with contact info and a message form | Y |![Contact Image](assets/images/navbar-contact-test.png) |
 | **Contact Page** |               |     |          |
-| **Send us a message form** |    |     | Post an image in the comments field for each action ![Contact Form Image](assets/images/contact-form.png) |
+| **Send us a message form** |    |     | ![Contact Form Image](assets/images/contact-form.png) |
 | 1. Enter name, email, and message, then click "Submit" | Confirmation message for message submission | Y | ![Submission Confirmation Image](assets/images/contact-form-test.png) |
 
 
@@ -163,9 +163,9 @@
 |---|------------------------------------------|------------------------------|-----|---------------------------------------|
 | 1 | Go to the **Hotel-Naif** home page.      | Redirected to the home page with room details and the necessary fields to fill for booking (e.g., location, check-in/out dates, number of persons). | Y   | ![Home Page Image](assets/images/home-page-test.png) |
 | 2 | Observe the room images and information on the home page. | Room images and details are displayed. | Y   | ![Room Images Image](assets/images/room-img-test.png) |
-| 3 | Fill in the location field.              | Location is filled.         | Y   | ![Location Image](image_url_3) |
-| 4 | Select a date for Check-in.              | Date is selected.           | Y   | ![Check-in Date Image](image_url_4) |
-| 5 | Select a date for Check-out.             | Date is selected.           | Y   | ![Check-out Date Image](image_url_5) |
+| 3 | Fill in the location field.              | Location is filled.         | Y   |                   |
+| 4 | Select a date for Check-in.              | Date is selected.           | Y   |                   |
+| 5 | Select a date for Check-out.             | Date is selected.           | Y   |                   |
 | 6 | Enter the number of persons.             | Number of persons is entered. | Y   | ![Number of Persons Image](assets/images/fill-to-book-test.png) |
 | 7 | Click on **Check Availability**.         | View available rooms.       | Y   | ![Check Availability Image](assets/images/pick-room-test.png) |
 | 8 | Click **Book** for your selected room.   | Confirmation message for the booked room. | Y   | ![Booking Confirmation Image](assets/images/user-bookin-massage-test.png) |
@@ -184,16 +184,16 @@
 | Staff Actions          | Expected Results                                  | Y/N | Comments                                            |
 | ----------------------- | -------------------------------------------------- | --- | ---------------------------------------------------- |
 | **Sign Up**             |                                                  |     | Comments                                            |
-| 1. Click on Login button | Redirected to Login & Sign Up form                        | Y   | - ![Image](assets/images/staff-singup-test.png)            |
-| 3. Enter valid username  | Field only accepts valid username                 | Y   | - ![Image](staff_signup_step_3_image_url)            |
-| 4. Enter valid password  | Field only accepts valid passwords                | Y   | - ![Image](staff_signup_step_4_image_url)            |
-| 5. Enter valid password confirmation | Must match the entered password        | Y   | - ![Image](staff_signup_step_5_image_url)            |
+| 1. Click on the Login button | Redirected to Login & Sign Up form                        | Y   | -![Image](assets/images/staff-singup-test.png)            |
+| 3. Enter valid username  | Field only accepts valid username                 | Y   |           |
+| 4. Enter valid password  | Field only accepts valid passwords                | Y   |            |
+| 5. Enter valid password confirmation | Must match the entered password        | Y   |        |
 | 6. Click on the Sign Up button | Confirmation message for successful signup   | Y   | - ![Image](assets/images/staff%20singup-massage-test.png)      |
 |                         |                                                  |     |                                                      |
  **LogIn**              |                                                  |     |                                                      |
 | 1. Click on Login button | Redirected to Login page                           | Y   | - ![Image](assets/images/staff-login-test.png)             |
-| 2. Enter valid username  | Field only accepts valid username                 | Y   | - ![Image](staff_login_step_2_image_url)             |
-| 3. Enter valid password  | Field only accepts valid passwords                | Y   | - ![Image](staff_login_step_3_image_url)             |
+| 2. Enter valid username  | Field only accepts valid username                 | Y   |           |
+| 3. Enter valid password  | Field only accepts valid passwords                | Y   |              |
 | 4. Click on the Login button | It will take you to the staff panel   | Y   | - ![Image](assets/images/staff-panel.png)      |
 | 5. Click "Logout" in the navbar | Takes staff to the home page, showing a logout message | Y | - ![Image](assets/images/staff-logout-massage.png)                   |
 |                         |                                                  |     |                                                      |
