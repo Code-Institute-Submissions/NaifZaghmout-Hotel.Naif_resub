@@ -65,10 +65,10 @@ def user_log_sign_page(request):
     if request.method != "POST":
         return render(request, "user/user_login_signup.html")
 
-    email = request.POST["email"]
+    username = request.POST["username"]
     password = request.POST["pswd"]
 
-    user = authenticate(username=email, password=password)
+    user = authenticate(username=username, password=password)
 
     if user is not None and user.is_staff:
         messages.error(request, "Incorrect Username or Password")

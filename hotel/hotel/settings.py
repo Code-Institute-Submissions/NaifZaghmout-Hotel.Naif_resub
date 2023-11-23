@@ -37,7 +37,7 @@ DEBUG = "True"
 ALLOWED_HOSTS = ["*"]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://8000-naifzaghmout-hotelnaif-3cpxgoqqdsg.ws-us106.gitpod.io"
+    "https://hotel-naif.onrender.com"
 ]
 
 
