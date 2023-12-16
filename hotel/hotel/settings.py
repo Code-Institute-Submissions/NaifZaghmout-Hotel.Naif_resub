@@ -32,12 +32,14 @@ SECRET_KEY = (
 )
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = "True"
+DEBUG = "false"
 
 ALLOWED_HOSTS = ["*"]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://hotel-naif.onrender.com"
+    "https://hotel-naif.onrender.com",
+    "https://*.gitpod.io",
+    "https://naifzaghmout-hotelnaif-wtxhjvzk6b3.ws-us107.gitpod.io/"
 ]
 
 
