@@ -70,7 +70,8 @@ class ManagmentViewsTestCase(TestCase):
         # Log in the staff user
         self.client.login(username="staffuser", password="testpassword")
 
-        response = self.client.get(reverse("view_room") + f"?roomid={test_room.id}")
+        response = self.client.get(reverse(
+            "view_room") + f"?roomid={test_room.id}")
 
         self.assertEqual(
             response.status_code, 200

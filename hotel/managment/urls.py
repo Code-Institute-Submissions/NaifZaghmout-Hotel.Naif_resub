@@ -10,7 +10,8 @@ urlpatterns = [
         name="addnewlocation",
     ),
     path("staff/panel/edit-room", managment_view.edit_room, name="edit_room"),
-    path("staff/panel/add-new-room", managment_view.add_new_room, name="addroom"),
+    path
+    ("staff/panel/add-new-room", managment_view.add_new_room, name="addroom"),
     path("staff/panel/edit-room/edit", managment_view.edit_room),
     path("staff/panel/view-room", managment_view.view_room, name="view_room"),
 ]

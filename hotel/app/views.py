@@ -24,7 +24,8 @@ def home(request):
     Home Page of the website
     """
     all_location = (
-        Hotels.objects.values_list("hotel_location", "id").distinct().order_by()
+        Hotels.objects.values_list(
+            "hotel_location", "id").distinct().order_by()
     )
     if request.method != "POST":
         data: dict = {"all_location": all_location}
@@ -41,11 +42,13 @@ def home(request):
         for excluding from the query set
         """
         for each_reservation in Reservation.objects.all():
-            if str(each_reservation.check_in_date) < str(request.POST["cin"]) and str(
+            if str(each_reservation.check_in_date) < str(
+                request.POST["cin"]) and str(
                 each_reservation.check_out_date
             ) < str(request.POST["cout"]):
                 pass
-            elif str(each_reservation.check_in_date) > str(request.POST["cin"]) and str(
+            elif str(each_reservation.check_in_date) > str(
+                request.POST["cin"]) and str(
                 each_reservation.check_out_date
             ) > str(request.POST["cout"]):
                 pass
@@ -66,7 +69,8 @@ def home(request):
         response = render(request, "index.html", data)
     except RenderingHotels as e_x:
         messages.error(request, e_x)
-        response = render(request, "index.html", {"all_location": all_location})
+        response = render(
+            request, "index.html", {"all_location": all_location})
 
     return HttpResponse(response)
 
@@ -90,7 +94,8 @@ def contact(request):
         confirmation_message = "Your message has been sent. Thank you!"
         messages.success(request, "Your message has been sent. Thank you!")
 
-    return render(request, 'contact.html', {'confirmation_message': confirmation_message})
+    return render(request, 'contact.html', {
+        'confirmation_message': confirmation_message})
 
 
 @login_required(login_url="/user")
@@ -115,10 +120,12 @@ def book_room(request):
     for each_reservation in Reservation.objects.all().filter(room=room):
         if (
             str(each_reservation.check_in_date) < str(request.POST["check_in"])
-            and str(each_reservation.check_out_date) < str(request.POST["check_out"])
+            and str(each_reservation.check_out_date) < str(
+                request.POST["check_out"])
         ) or (
             str(each_reservation.check_in_date) > str(request.POST["check_in"])
-            and str(each_reservation.check_out_date) > str(request.POST["check_out"])
+            and str(each_reservation.check_out_date) > str(request.POST[
+                "check_out"])
         ):
             pass
         else:

@@ -23,9 +23,12 @@ def add_new_location(request):
         state = request.POST["new_state"]
         country = request.POST["new_country"]
 
-        hotels = Hotels.objects.filter(hotel_location=location, hotel_state=state)
+        hotels = Hotels.objects.filter(
+            hotel_location=location, hotel_state=state)
         if hotels.exists():
-            messages.warning(request, "Sorry, a City at this Location already exists")
+            messages.warning(
+                request, "Sorry, a City at this Location already exists")
+
             return redirect("staffpanel")
 
         new_hotel = Hotels(
@@ -66,7 +69,8 @@ def view_room(request):
     reservation = Reservation.objects.filter(room=room)
     return HttpResponse(
         render(
-            request, "staff/view_room.html", {"room": room, "reservations": reservation}
+            request, "staff/view_room.html", {
+                "room": room, "reservations": reservation}
         )
     )
 
@@ -85,7 +89,8 @@ def panel(request):
     unavailable_rooms = len(Rooms.objects.filter(availability_status="2"))
     reserved = len(Reservation.objects.all())
 
-    hotel = Hotels.objects.values_list("hotel_location", "id").distinct().order_by()
+    hotel = Hotels.objects.values_list(
+        "hotel_location", "id").distinct().order_by()
 
     response = render(
         request,

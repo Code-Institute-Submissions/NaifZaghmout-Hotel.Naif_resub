@@ -33,14 +33,17 @@ def create_user(request, user_type):
 
     try:
         user = User.objects.get(username=user_name)
-        messages.warning(request, f"Username {user_type.capitalize()} Not Available")
+        messages.warning(
+            request, f"Username {user_type.capitalize()} Not Available")
         return redirect(f"{user_type}loginpage")
     except User.DoesNotExist:
-        new_user = User.objects.create_user(username=user_name, password=password1)
+        new_user = User.objects.create_user(
+            username=user_name, password=password1)
         new_user.is_superuser = False
         new_user.is_staff = user_type == "staff"
         new_user.save()
-        messages.success(request, f"{user_type.capitalize()} Registration Successful")
+        messages.success(request, f"{
+            user_type.capitalize()} Registration Successful")
         return redirect(f"{user_type}loginpage")
 
 
