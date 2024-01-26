@@ -3,25 +3,26 @@
 {% endblock title %}
 {% block body %}
 
+<head>
+    <style>
+        .table-container {
+            padding: 20px;
+            /* Add padding from left and right */
+        }
 
-<style>
-    .table-container {
-        padding: 20px;
-        /* Add padding from left and right */
-    }
+        .img-container {
+            display: flex;
+            justify-content: space-between;
+        }
 
-    .img-container {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .img-container img {
-        width: 95%;
-        /* Make all images the same size and responsive */
-        max-width: 100%;
-        height: auto;
-    }
-</style>
+        .img-container img {
+            width: 95%;
+            /* Make all images the same size and responsive */
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
 <!--Booking Section starts here-->
 <section>
     <div class="container-fluid py-5 px-5 ">
@@ -46,24 +47,25 @@
                 <div class="col-lg-2">
                     <label for="cin">Check In Date</label>
                     <input class="form-control mr-sm-2" type="date" id="cin" name="cin" min="{% todays_date %}"
-                        max="{% max_date %}" required="true">
+                        max="{% max_date %}" required>
                 </div>
 
                 <div class="col-lg-2">
                     <label for="cout">Check Out Date</label>
                     <input class="form-control mr-sm-2" type="date" id="cout" name="cout" min="{% tommorow %}"
-                        max="{% max_date %}" required="true">
+                        max="{% max_date %}" required>
                 </div>
 
                 <div class="col-lg-2">
                     <label for="capacity">Number of Guests</label>
-                    <input class="form-control mr-sm-2" type="number" id="capacity" name="capacity" required="true">
+                    <input class="form-control mr-sm-2" type="number" id="capacity" name="capacity" required>
                 </div>
 
                 <div class="col-lg-2">
                     <input type="submit" value="Check Availability" class="form-control mr-sm-2 btn btn-primary my-4"
                         style="position: relative; top: 7px;">
                 </div>
+
 
                 {% if rooms %}
                 <p class="text-center text-success">Rooms Available</p>
