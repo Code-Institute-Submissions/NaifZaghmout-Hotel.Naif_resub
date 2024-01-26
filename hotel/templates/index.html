@@ -3,7 +3,6 @@
 {% endblock title %}
 {% block body %}
 
-<head>
     <style>
         .table-container {
             padding: 20px;
@@ -23,215 +22,220 @@
         }
     </style>
 </head>
-<!--Booking Section starts here-->
-<section>
-    <div class="container-fluid py-5 px-5 ">
-        <form method="POST">
-            {% csrf_token %}
-            <div class="row justify-content-center py-5 bg-light">
-                <div class="col-lg-4">
-                    <label>Location</label>
-                    <select class="form-control" name="search_location" id="roomstatus">
-                        <!--Hotel id and location-->
-                        <option>Location</option>
-                        {% for each_location,each_hotel_id in all_location %}
 
-                        <option value={{each_hotel_id}}>{{each_location}}</option>
-                        {% endfor %}
+<body>
+
+    <!--Booking Section starts here-->
+    <section>
+        <h2>.</h2>
+        <div class="container-fluid py-5 px-5 ">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="row justify-content-center py-5 bg-light">
+                    <div class="col-lg-4">
+                        <label>Location</label>
+                        <select class="form-control" name="search_location" id="roomstatus">
+                            <!--Hotel id and location-->
+                            <option>Location</option>
+                            {% for each_location,each_hotel_id in all_location %}
+
+                            <option value={{each_hotel_id}}>{{each_location}}</option>
+                            {% endfor %}
 
 
 
-                    </select>
+                        </select>
+                    </div>
+                    {%load app_tags%}
+                    <div class="col-lg-2">
+                        <label for="cin">Check In Date</label>
+                        <input class="form-control mr-sm-2" type="date" id="cin" name="cin" min="{% todays_date %}"
+                            max="{% max_date %}" required>
+                    </div>
+
+                    <div class="col-lg-2">
+                        <label for="cout">Check Out Date</label>
+                        <input class="form-control mr-sm-2" type="date" id="cout" name="cout" min="{% tommorow %}"
+                            max="{% max_date %}" required>
+                    </div>
+
+                    <div class="col-lg-2">
+                        <label for="capacity">Number of Guests</label>
+                        <input class="form-control mr-sm-2" type="number" id="capacity" name="capacity" required>
+                    </div>
+
+                    <div class="col-lg-2">
+                        <input type="submit" value="Check Availability"
+                            class="form-control mr-sm-2 btn btn-primary my-4" style="position: relative; top: 7px;">
+                    </div>
+
+
+                    {% if rooms %}
+                    <p class="text-center text-success">Rooms Available</p>
+                    {% endif %}
+
+                    {% if rooms %}
+                    <p class="text-center text-success">Rooms Available</p>
+                    {% endif %}
+
                 </div>
-                {%load app_tags%}
-                <div class="col-lg-2">
-                    <label for="cin">Check In Date</label>
-                    <input class="form-control mr-sm-2" type="date" id="cin" name="cin" min="{% todays_date %}"
-                        max="{% max_date %}" required>
-                </div>
+            </form>
 
-                <div class="col-lg-2">
-                    <label for="cout">Check Out Date</label>
-                    <input class="form-control mr-sm-2" type="date" id="cout" name="cout" min="{% tommorow %}"
-                        max="{% max_date %}" required>
-                </div>
+        </div>
+    </section>
+    <!--Booking Section ends here-->
+    <!--Fetched reults appear here-->
+    <div class="container-fluid px-0 mx-aut">
+        {% if rooms %}
+        <table class="table">
+            <thead class="o">
+                <th>Type</th>
+                <th>Location</th>
+                <th>Person</th>
+                <th>price</th>
+                <th>Action</th>
+            </thead>
+            {% for r in rooms %}
+            <tr>
+                <td>{{ r.get_room_type_display }}</td>
+                <td>{{ r.hotel.location }}</td>
+                <td>{{ r.capacity }}</td>
+                <td>{{ r.price }}</td>
 
-                <div class="col-lg-2">
-                    <label for="capacity">Number of Guests</label>
-                    <input class="form-control mr-sm-2" type="number" id="capacity" name="capacity" required>
-                </div>
+                <td><a href="/user/book-room?roomid={{r.id}}"><button class="btn btn-warning">Book Now</button></a></td>
+            </tr>
+            {% endfor %}
 
-                <div class="col-lg-2">
-                    <input type="submit" value="Check Availability" class="form-control mr-sm-2 btn btn-primary my-4"
-                        style="position: relative; top: 7px;">
-                </div>
-
-
-                {% if rooms %}
-                <p class="text-center text-success">Rooms Available</p>
-                {% endif %}
-
-                {% if rooms %}
-                <p class="text-center text-success">Rooms Available</p>
-                {% endif %}
-
-            </div>
-        </form>
-
+        </table>
+        {% endif %}
     </div>
-</section>
-<!--Booking Section ends here-->
-<!--Fetched reults appear here-->
-<div class="container-fluid px-0 mx-aut">
-    {% if rooms %}
-    <table class="table">
-        <thead class="o">
-            <th>Type</th>
-            <th>Location</th>
-            <th>Person</th>
-            <th>price</th>
-            <th>Action</th>
-        </thead>
-        {% for r in rooms %}
-        <tr>
-            <td>{{ r.get_room_type_display }}</td>
-            <td>{{ r.hotel.location }}</td>
-            <td>{{ r.capacity }}</td>
-            <td>{{ r.price }}</td>
-
-            <td><a href="/user/book-room?roomid={{r.id}}"><button class="btn btn-warning">Book Now</button></a></td>
-        </tr>
-        {% endfor %}
-
-    </table>
-    {% endif %}
-</div>
-<!--Fetched results ends here-->
+    <!--Fetched results ends here-->
 
 
-<h3 class="text-center text-dark">Rooms Types</h3>
+    <h3 class="text-center text-dark">Rooms Types</h3>
 
-<div class="container-fluid px-0 border border-danger table-container">
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th class="text-center">Information</th>
-                <th class="text-center">Images</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    <h1>Quad Bedroom</h1>
-                    <p>Price: $55/day</p>
-                    <p>Size: 30 ft</p>
-                    <p>Allowed Guests: Max person 3</p>
-                    <p>Amenities: Free Wifi , TV , Private Bathroom , Hair Dryer</p>
-                    <p>Near By: Cinema , Restaurants , Shopping Mall , Sea View</p>
-                </td>
-                <td>
-                    <div class="img-container">
-                        <div class="col-4">
-                            <a href="https://a0.muscache.com/im/pictures/miso/Hosting-970005752681461666/original/1cbad6a0-b5d6-4e38-9d0f-ef81e1a6f3bb.jpeg"
-                                target="_blank">
-                                <img src="https://a0.muscache.com/im/pictures/miso/Hosting-970005752681461666/original/1cbad6a0-b5d6-4e38-9d0f-ef81e1a6f3bb.jpeg"
-                                    class="img-fluid" alt="Quad Bedroom 1">
-                            </a>
+    <div class="container-fluid px-0 border border-danger table-container">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class="text-center">Information</th>
+                    <th class="text-center">Images</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <h1>Quad Bedroom</h1>
+                        <p>Price: $55/day</p>
+                        <p>Size: 30 ft</p>
+                        <p>Allowed Guests: Max person 3</p>
+                        <p>Amenities: Free Wifi , TV , Private Bathroom , Hair Dryer</p>
+                        <p>Near By: Cinema , Restaurants , Shopping Mall , Sea View</p>
+                    </td>
+                    <td>
+                        <div class="img-container">
+                            <div class="col-4">
+                                <a href="https://a0.muscache.com/im/pictures/miso/Hosting-970005752681461666/original/1cbad6a0-b5d6-4e38-9d0f-ef81e1a6f3bb.jpeg"
+                                    target="_blank">
+                                    <img src="https://a0.muscache.com/im/pictures/miso/Hosting-970005752681461666/original/1cbad6a0-b5d6-4e38-9d0f-ef81e1a6f3bb.jpeg"
+                                        class="img-fluid" alt="Quad Bedroom 1">
+                                </a>
+                            </div>
+                            <div class="col-4">
+                                <a href="https://a0.muscache.com/im/pictures/miso/Hosting-970005752681461666/original/b957fa23-55d2-47a8-b38f-178e04fadf65.jpeg"
+                                    target="_blank">
+                                    <img src="https://a0.muscache.com/im/pictures/miso/Hosting-970005752681461666/original/b957fa23-55d2-47a8-b38f-178e04fadf65.jpeg"
+                                        class="img-fluid" alt="Quad Bedroom 2">
+                                </a>
+                            </div>
+                            <div class="col-4">
+                                <a href="https://a0.muscache.com/im/pictures/miso/Hosting-970005752681461666/original/1a2ea7d0-da57-4089-831c-6e1f091a9e5e.jpeg"
+                                    target="_blank">
+                                    <img src="https://a0.muscache.com/im/pictures/miso/Hosting-970005752681461666/original/1a2ea7d0-da57-4089-831c-6e1f091a9e5e.jpeg"
+                                        class="img-fluid" alt="Quad Bedroom 3">
+                                </a>
+                            </div>
                         </div>
-                        <div class="col-4">
-                            <a href="https://a0.muscache.com/im/pictures/miso/Hosting-970005752681461666/original/b957fa23-55d2-47a8-b38f-178e04fadf65.jpeg"
-                                target="_blank">
-                                <img src="https://a0.muscache.com/im/pictures/miso/Hosting-970005752681461666/original/b957fa23-55d2-47a8-b38f-178e04fadf65.jpeg"
-                                    class="img-fluid" alt="Quad Bedroom 2">
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="https://a0.muscache.com/im/pictures/miso/Hosting-970005752681461666/original/1a2ea7d0-da57-4089-831c-6e1f091a9e5e.jpeg"
-                                target="_blank">
-                                <img src="https://a0.muscache.com/im/pictures/miso/Hosting-970005752681461666/original/1a2ea7d0-da57-4089-831c-6e1f091a9e5e.jpeg"
-                                    class="img-fluid" alt="Quad Bedroom 3">
-                            </a>
-                        </div>
-                    </div>
 
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <h1>Penthouse</h1>
-                    <p>Price: $100/day</p>
-                    <p>Size: 250 ft</p>
-                    <p>Allowed Guests: Max person 3</p>
-                    <p>Amenities: Free Wifi , TV , Private Bathroom , Hair Dryer</p>
-                    <p>Near By: Cinema , Restaurants , Shopping Mall , Sea View</p>
-                </td>
-                <td>
-                    <div class="img-container">
-                        <div class="col-4">
-                            <a href="https://a0.muscache.com/im/pictures/c387d81a-2ebd-4837-a325-6720e78ddf44.jpg"
-                                target="_blank">
-                                <img src="https://a0.muscache.com/im/pictures/c387d81a-2ebd-4837-a325-6720e78ddf44.jpg"
-                                    class="img-fluid" alt="Penthouse 1">
-                            </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h1>Penthouse</h1>
+                        <p>Price: $100/day</p>
+                        <p>Size: 250 ft</p>
+                        <p>Allowed Guests: Max person 3</p>
+                        <p>Amenities: Free Wifi , TV , Private Bathroom , Hair Dryer</p>
+                        <p>Near By: Cinema , Restaurants , Shopping Mall , Sea View</p>
+                    </td>
+                    <td>
+                        <div class="img-container">
+                            <div class="col-4">
+                                <a href="https://a0.muscache.com/im/pictures/c387d81a-2ebd-4837-a325-6720e78ddf44.jpg"
+                                    target="_blank">
+                                    <img src="https://a0.muscache.com/im/pictures/c387d81a-2ebd-4837-a325-6720e78ddf44.jpg"
+                                        class="img-fluid" alt="Penthouse 1">
+                                </a>
+                            </div>
+                            <div class="col-4">
+                                <a href="https://a0.muscache.com/im/pictures/c05c4fd4-9c52-4ebd-b740-5ff03b9897a2.jpg"
+                                    target="_blank">
+                                    <img src="https://a0.muscache.com/im/pictures/c05c4fd4-9c52-4ebd-b740-5ff03b9897a2.jpg"
+                                        class="img-fluid" alt="Penthouse 2">
+                                </a>
+                            </div>
+                            <div class="col-4">
+                                <a href="https://a0.muscache.com/im/pictures/6f144c6c-dc3d-489c-8899-773d9be67a3f.jpg"
+                                    target="_blank">
+                                    <img src="https://a0.muscache.com/im/pictures/6f144c6c-dc3d-489c-8899-773d9be67a3f.jpg"
+                                        class="img-fluid" alt="Penthouse 3">
+                                </a>
+                            </div>
                         </div>
-                        <div class="col-4">
-                            <a href="https://a0.muscache.com/im/pictures/c05c4fd4-9c52-4ebd-b740-5ff03b9897a2.jpg"
-                                target="_blank">
-                                <img src="https://a0.muscache.com/im/pictures/c05c4fd4-9c52-4ebd-b740-5ff03b9897a2.jpg"
-                                    class="img-fluid" alt="Penthouse 2">
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="https://a0.muscache.com/im/pictures/6f144c6c-dc3d-489c-8899-773d9be67a3f.jpg"
-                                target="_blank">
-                                <img src="https://a0.muscache.com/im/pictures/6f144c6c-dc3d-489c-8899-773d9be67a3f.jpg"
-                                    class="img-fluid" alt="Penthouse 3">
-                            </a>
-                        </div>
-                    </div>
 
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <h1>Suite</h1>
-                    <p>Price: $200/day</p>
-                    <p>Size: 400 ft</p>
-                    <p>Allowed Guests: Max person 5 </p>
-                    <p>Amenities: Free Wifi , TV , Private Bathroom , Hair Dryer</p>
-                    <p>Near By: Cinema , Restaurants , Shopping Mall , Sea View</p>
-                </td>
-                <td>
-                    <div class="img-container">
-                        <div class="col-4">
-                            <a href="https://a0.muscache.com/im/pictures/miso/Hosting-667312619440112805/original/07d96351-be9a-4c0c-a5fa-5c74d4fe2a50.jpeg?im_w=1200"
-                                target="_blank">
-                                <img src="https://a0.muscache.com/im/pictures/miso/Hosting-667312619440112805/original/07d96351-be9a-4c0c-a5fa-5c74d4fe2a50.jpeg?im_w=1200"
-                                    class="img-fluid" alt="Suite 1">
-                            </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h1>Suite</h1>
+                        <p>Price: $200/day</p>
+                        <p>Size: 400 ft</p>
+                        <p>Allowed Guests: Max person 5 </p>
+                        <p>Amenities: Free Wifi , TV , Private Bathroom , Hair Dryer</p>
+                        <p>Near By: Cinema , Restaurants , Shopping Mall , Sea View</p>
+                    </td>
+                    <td>
+                        <div class="img-container">
+                            <div class="col-4">
+                                <a href="https://a0.muscache.com/im/pictures/miso/Hosting-667312619440112805/original/07d96351-be9a-4c0c-a5fa-5c74d4fe2a50.jpeg?im_w=1200"
+                                    target="_blank">
+                                    <img src="https://a0.muscache.com/im/pictures/miso/Hosting-667312619440112805/original/07d96351-be9a-4c0c-a5fa-5c74d4fe2a50.jpeg?im_w=1200"
+                                        class="img-fluid" alt="Suite 1">
+                                </a>
+                            </div>
+                            <div class="col-4">
+                                <a href="https://a0.muscache.com/im/pictures/miso/Hosting-667312619440112805/original/a547e183-4c1e-4a61-9e85-eb6055d298e1.jpeg?im_w=1200"
+                                    target="_blank">
+                                    <img src="https://a0.muscache.com/im/pictures/miso/Hosting-667312619440112805/original/a547e183-4c1e-4a61-9e85-eb6055d298e1.jpeg?im_w=1200"
+                                        class="img-fluid" alt="Suite 2">
+                                </a>
+                            </div>
+                            <div class="col-4">
+                                <a href="https://a0.muscache.com/im/pictures/miso/Hosting-667312619440112805/original/f68d03d5-b0e2-4455-a107-f1de267d5ce9.jpeg?im_w=1200"
+                                    target="_blank">
+                                    <img src="https://a0.muscache.com/im/pictures/miso/Hosting-667312619440112805/original/f68d03d5-b0e2-4455-a107-f1de267d5ce9.jpeg?im_w=1200"
+                                        class="img-fluid" alt="Suite 3">
+                                </a>
+                            </div>
                         </div>
-                        <div class="col-4">
-                            <a href="https://a0.muscache.com/im/pictures/miso/Hosting-667312619440112805/original/a547e183-4c1e-4a61-9e85-eb6055d298e1.jpeg?im_w=1200"
-                                target="_blank">
-                                <img src="https://a0.muscache.com/im/pictures/miso/Hosting-667312619440112805/original/a547e183-4c1e-4a61-9e85-eb6055d298e1.jpeg?im_w=1200"
-                                    class="img-fluid" alt="Suite 2">
-                            </a>
-                        </div>
-                        <div class="col-4">
-                            <a href="https://a0.muscache.com/im/pictures/miso/Hosting-667312619440112805/original/f68d03d5-b0e2-4455-a107-f1de267d5ce9.jpeg?im_w=1200"
-                                target="_blank">
-                                <img src="https://a0.muscache.com/im/pictures/miso/Hosting-667312619440112805/original/f68d03d5-b0e2-4455-a107-f1de267d5ce9.jpeg?im_w=1200"
-                                    class="img-fluid" alt="Suite 3">
-                            </a>
-                        </div>
-                    </div>
 
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-<!--Roo tables ends here-->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!--Roo tables ends here-->
+</body>
 
 
 {% endblock body %}
