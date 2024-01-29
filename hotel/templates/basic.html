@@ -89,9 +89,10 @@
 
         {% else %}
         <div class="nav-link">
-          <a href="/user" class="btn btn-group bg-warning font-weight-bold" data-toggle="modal" data-target="#forlogin">
-            User Login
+          <a href="{% url 'userloginpage' %}" class="btn btn-group bg-warning font-weight-bold">
+              User Login
           </a>
+      </div>
         </div>
         <div class="nav-link">
           <a href="/staff" class="btn btn-group bg-warning font-weight-bold">
@@ -128,7 +129,7 @@
     <div class="container p-4">
       <!-- Section: Images -->
       <section>
-        <h2>.</h2>
+        <h2>Our Hotels</h2>
         <div class="row">
           <div class="col-lg-2 col-md-12 mb-4 mb-md-0">
             <div class="bg-image hover-overlay ripple shadow-1-strong rounded" data-ripple-color="light">
