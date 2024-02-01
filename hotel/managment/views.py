@@ -164,7 +164,6 @@ def add_new_room(request):
     return redirect("staffpanel")
 
 
-
 @login_required(login_url="/staff")
 def delete_room(request):
     """
@@ -182,5 +181,6 @@ def delete_room(request):
         messages.warning(request, "Room Deleted Successfully.")
         return redirect("staffpanel")  # Redirect to the list of rooms
     else:
-        messages.warning(request, "The Room is reserved, You cant delete this room")
-        return redirect("staffpanel")  # Redirect to the list of rooms
+        messages.warning(
+            request, "The Room is reserved, You cant delete this room")
+        return redirect("staffpanel")  # R
