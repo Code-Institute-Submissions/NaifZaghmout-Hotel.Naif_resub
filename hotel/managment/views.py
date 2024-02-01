@@ -162,3 +162,25 @@ def add_new_room(request):
         messages.success(request, "New Room Added Successfully")
 
     return redirect("staffpanel")
+
+
+
+@login_required(login_url="/staff")
+def delete_room(request):
+    """
+    Delete Room
+    """
+    room_id = request.GET["roomid"]
+
+    # Check if there are reservations for the room
+    reservations_exist = Reservation.objects.filter(room=room_id).exists()
+    room = get_object_or_404(Rooms, id=room_id)
+
+    if not reservations_exist:
+        # No reservations, delete the room
+        room.delete()
+        messages.warning(request, "Room Deleted Successfully.")
+        return redirect("staffpanel")  # Redirect to the list of rooms
+    else:
+        messages.warning(request, "The Room is reserved, You cant delete this room")
+        return redirect("staffpanel")  # Redirect to the list of rooms

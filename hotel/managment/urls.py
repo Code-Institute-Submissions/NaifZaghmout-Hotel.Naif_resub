@@ -14,4 +14,5 @@ urlpatterns = [
     ("staff/panel/add-new-room", managment_view.add_new_room, name="addroom"),
     path("staff/panel/edit-room/edit", managment_view.edit_room),
     path("staff/panel/view-room", managment_view.view_room, name="view_room"),
+    path('staff/panel/delete-room', managment_view.delete_room, name='delete_room'),
 ]
