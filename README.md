@@ -166,12 +166,13 @@ This project is built using Python, Django, HTML, JavaScript, and Bootstrap, ens
 
 - Manage reservations and room availability.
 - Add or remove new rooms and locations.
+- Delete a room.
 
 
 
-    - Manage reservations / Add rooms and Locations :
+    - Manage reservations / Add rooms and Locations / Delete the room :
 
-    - ![Manage reservations / Add rooms and Locations](assets/images/manage-rooms.png)
+    - ![Manage reservations / Add rooms and Locations](assets/images/view-delete-edit.png)
 
 
 

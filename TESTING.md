@@ -100,6 +100,26 @@
 | 5 | Modify the room price.                   | Price is updated.           | Y   | - |
 | 6 | Click on **Save**.                       | Changes are saved, and confirmation message is received. | Y   | - |
 
+
+#### View Room
+
+| # | User Actions                             | Expected Results            | Y/N | Comments                              |
+|---|------------------------------------------|------------------------------|-----|---------------------------------------|
+| 1 | Log in as staff.                         | Redirected to the staff dashboard. | Y   | - |
+| 2 | Click on **Rooms** in the Django administration page.| Redirected to the room management page. | Y   | - |
+| 3 | Click on the room to view.               | Redirected to a page displaying details of the selected room. | Y   | - |
+
+
+#### Delete Room
+
+| # | User Actions                             | Expected Results            | Y/N | Comments                              |
+|---|------------------------------------------|------------------------------|-----|---------------------------------------|
+| 1 | Log in as staff.                         | Redirected to the staff dashboard. | Y   | - |
+| 2 | Click on **Rooms** in the Django administration page.| Redirected to the room management page. | Y   | - |
+| 3 | Click on the room to delete.             | If the room is booked, show a message "Room is booked and cannot be deleted." | Y   | - |
+| 4 |                                           | If the room is not booked, show a confirmation message and delete the room. | Y   | - |
+
+
 #### View Dashboard Statistics
 
 | # | User Actions                             | Expected Results            | Y/N | Comments                              |
@@ -197,9 +217,9 @@
 | 4. Click on the Login button | It will take you to the staff panel   | Y   | - ![Image](assets/images/staff-panel.png)      |
 | 5. Click "Logout" in the navbar | Takes staff to the home page, showing a logout message | Y | - ![Image](assets/images/staff-logout-massage.png)                   |
 |                         |                                                  |     |                                                      |
-| **Navbar**              |                                                  |     |                                                      |
+| | **Navbar**              |                                                  |     |                                                      |
 | 1. Click 'Dashboard'    | Redirected to the Room Stats page                  | Y   | - ![Image](assets/images/staff-dashbord-test.png)               |
-| 2. Scroll down to see Rooms Details | Rooms' details displayed with Room Number, Type, Status, Price, Capacity, Size, and Actions (Add Room, Add Location, Edit, View) | Y | - ![Image](assets/images/staff-room-details-test.png)           |
+| 2. Scroll down to see Rooms Details | Rooms' details displayed with Room Number, Type, Status, Price, Capacity, Size, and Actions (Add Room, Add Location, Edit, View, and Delete) | Y | - ![Image](assets/images/view-delete-edit.png)           |
 | 3. Click 'Add New Room' | Redirected to a form with fields for adding a new room, including Type, Capacity, Price, Size, Status, and Location | Y | - ![Image](assets/images/satff-add-new-room-test.png)            |
 | 4. Fill out the form and click 'Add Room' | New Room Added Successfully               | Y   | - ![Image](assets/images/staff-new-room-add-massage.png)   |
 | 5. Click 'Add New Location' | Redirected to a form with fields for adding a new location, including Owner, City, State, and Country | Y | - ![Image](assets/images/staff-add-location-test.png)        |
@@ -207,13 +227,7 @@
 | 7. Click 'Edit'         | Redirected to the Edit Room page with a form to fill out Room Number, Room Type, Capacity, Price, Size, Status, and Location | Y | - ![Image](assets/images/staff-edit-test.png)               |
 | 8. Click 'Save'         | Confirmation message to confirm the edit          | Y   | - ![Image](assets/images/staff-new-location-massage-test.png)  |
 | 9. Click 'View'         | Redirected to a page displaying details of the selected room, including Number, Type, Capacity, Size, Status, City, State, and Country | Y | - ![Image](assets/images/staff-view-test.png)       |
-
-
-
-
-
-
-
+| 10. Click 'Delete'      | If the room is not booked, it will be deleted with a confirmation message; if booked, a message will inform that the room is booked and cannot be deleted | Y | - ![Image](assets/images/delete-massage.png)       |
 
 
 
@@ -260,6 +274,13 @@
 
 
 
+## HTML Validation:
+
+
+- No errors or warnings were found when passing through the official [W3C](https://validator.w3.org/#validate_by_input) validator.
+
+
+- ![html](assets/images/html-v.png)
 
 
 
@@ -274,17 +295,12 @@
 - **You may encounter linter warnings about lines of code exceeding the recommended maximum length. These long lines are intentionally kept for better code readability and structure. They do not affect the functionality or correctness of the code. Modifying them might compromise the clarity of the code, and, therefore, they are left as is.**
 
 
-- ![python - 1](assets/images/view.v.png)
 - ![python - 2](assets/images/test.v.png)
 - ![python - 3](assets/images/urls-v.png)
 - ![python - 4](assets/images/test2.v.png)
 - ![python - 5](assets/images/models-v.png)
 - ![python - 6](assets/images/app-_tags-v.png)
 - ![python - 7](assets/images/exceptions-v.png)
-- ![python - 8](assets/images/view-cuostmauth-v.png)
-- ![python - 9](assets/images/managment-view-v.png)
-- ![python - 10](assets/images/setting-hotel-v.png)
-- ![python - 11](assets/images/app-view-v.png)
 - ![python - 12](assets/images/models-app-v.png)
 
 
