@@ -509,54 +509,65 @@ except User.DoesNotExist:
 
 
 
-
-
 ## Deployment
 
-- This project was successfully deployed using [Render](https://render.com).
+This project can be easily deployed using [Render](https://render.com), a cloud platform that simplifies the deployment process.
+
+### Prerequisites
+
+1. **Render Account:**
+   - Ensure you have a Render account. If not, you can sign up at [Render](https://render.com).
+
+### Deployment Steps
+
+#### 1. Clone the Repository
 
 
-#### Prerequisites
+1. git clone `https://github.com/NaifZaghmout/Hotel.Naif.git`
 
-1. Ensure you have a Render account. If not, sign up at [Render](https://render.com).
-
-
-#### Deployment Steps
-
-
-1. Clone the Repository
-
-- git clone` https://github.com/NaifZaghmout/Hotel.Naif.git` && cd hotel
-
+`cd hotel`
 
 2. Install Dependencies
 
-- pip install -r requirements.txt
+Ensure that all necessary dependencies are installed. You can use the following command:
 
+`pip install -r requirements.txt`
 
 3. Start the Application
 
-- gunicorn Hotel.Naif.wsgi:application
+Use Gunicorn to start the application:
 
 
+`gunicorn Hotel.Naif.wsgi:application`
 
 4. Configure Environment Variables on Render
 
-- When setting up your Render service, go to "Advanced" settings and add necessary environment variables.
-- For example, database connection strings, API keys, or other configuration values.
+During the Render service setup, you need to configure environment variables. These may include database connection strings, API keys, or other configuration values.
 
+Navigate to the "Advanced" settings in Render.
+Add the required environment variables.
 
+5. Deploy the Service on Render
 
-5. Deploy the Service
+Follow these steps to deploy your application on Render:
 
-- Click "Create Web Service" in the Render dashboard to deploy your application.
-- Choose the appropriate branch to deploy, select the environment, and set the build command to 'pip install -r requirements.txt'.
-- Set the start command to 'gunicorn Hotel.Naif.wsgi:application'.
-- Select the Free plan and click on "Advanced" settings to add environment variables if needed.
+In the Render dashboard, click "Create Web Service".
+Choose the appropriate branch to deploy.
+Select the environment and set the build command to pip install -r requirements.txt.
+Set the start command to gunicorn Hotel.Naif.wsgi:application.
+Choose the Free plan.
+In "Advanced" settings, add environment variables if needed.
 
+6. Configure Additional Settings
 
+If your application requires additional configuration, make sure to update the corresponding settings in the Render dashboard.
 
-6. Access Your Deployed App
+7. Monitor and Debug (Optional)
+Render provides monitoring and logging tools. Use them to monitor your application's performance and troubleshoot any issues.
+
+8. Access Your Deployed App
 
 - Once deployed, Render will provide a URL to access your live application.
+
 - You can find the live version [here](https://hotel-naif.onrender.com).
+
