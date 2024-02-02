@@ -5,30 +5,32 @@
 
 
 <h3 class="text-center  text-success">All Bookings </h3>
-<table class="table">
-    <thead>
+<div style="min-height: 400px;">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Room</th>
+                <th>Location</th>
+                <th>Person</th>
+                <th>Check in</th>
+                <th>Check out</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        {% for each_booking in bookings %}
         <tr>
-            <th>User</th>
-            <th>Room</th>
-            <th>Location</th>
-            <th>Person</th>
-            <th>Check in</th>
-            <th>Check out</th>
-            <th>Price</th>
+            <td>{{each_booking.guest.username}}</td>
+            <td>{{each_booking.room.room_number}}</td>
+            <td>{{each_booking.room.hotel.hotel_location}}</td>
+            <td>{{each_booking.room.max_capacity}}</td>
+            <td>{{each_booking.check_in_date}}</td>
+            <td>{{each_booking.check_out_date}}</td>
+            <td>{{each_booking.room.room_price}}</td>
         </tr>
-    </thead>
-    {% for each_booking in bookings %}
-    <tr>
-        <td>{{each_booking.guest.username}}</td>
-        <td>{{each_booking.room.room_number}}</td>
-        <td>{{each_booking.room.hotel.hotel_location}}</td>
-        <td>{{each_booking.room.max_capacity}}</td>
-        <td>{{each_booking.check_in_date}}</td>
-        <td>{{each_booking.check_out_date}}</td>
-        <td>{{each_booking.room.room_price}}</td>
-    </tr>
-    {% endfor %}
+        {% endfor %}
 
 
-</table>
+    </table>
+</div>
 {% endblock body %}
