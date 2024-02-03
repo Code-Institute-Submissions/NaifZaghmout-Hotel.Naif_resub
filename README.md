@@ -418,6 +418,10 @@ Please see the [Google sheet](https://docs.google.com/spreadsheets/d/1899SEBdH8e
 
 
 
+------------------------------------------------------------------------------------------------
+
+
+
 
 ## Agile Development Methodology
 
@@ -435,6 +439,7 @@ In this project, I adopted an Agile methodology using GitHub. Agile was chosen f
 
 
 
+------------------------------------------------------------------------------------------------
 
 
 

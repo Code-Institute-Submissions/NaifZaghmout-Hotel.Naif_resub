@@ -316,5 +316,8 @@
 # Lighthouse Report
 
 - ![Lighthouse](assets/images/lighthouse.png)
+- ![Lighthouse2](assets/images/lighthouse2.png)
+- ![Lighthouse3](assets/images/lighthouse3.png)
+- ![Lighthouse4](assets/images/lighthouse4.png)
 
 
