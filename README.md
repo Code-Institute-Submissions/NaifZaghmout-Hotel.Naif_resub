@@ -553,18 +553,18 @@ This project can be easily deployed using [Render](https://render.com), a cloud 
 `cd hotel`
 
 
-2. Install Dependencies
+2. **Install Dependencies**
 
 Ensure that all necessary dependencies are installed. You can use the following command:
 
 `pip install -r requirements.txt`
 
 
-3. Database Setup (if applicable)
+3. **Database Setup (if applicable)**
 
 If your application requires a database, make sure to set up and configure the database before deployment. Update the database connection settings accordingly.
 
-4. Start the Application
+4. **Start the Application**
 
 Use Gunicorn to start the application:
 
@@ -572,7 +572,7 @@ Use Gunicorn to start the application:
 
 
 
-5. Configure Environment Variables on Render
+5. **Configure Environment Variables on Render**
 
 During the Render service setup, you need to configure environment variables. These may include database connection strings, API keys, or other configuration values.
 
@@ -581,7 +581,7 @@ Navigate to the "Advanced" settings in Render.
 Add the required environment variables.
 
 
-6. Deploy the Service on Render
+6. **Deploy the Service on Render**
 
 Follow these steps to deploy your application on Render:
 
@@ -593,12 +593,12 @@ Follow these steps to deploy your application on Render:
   - In "Advanced" settings, add environment variables if needed.
 
 
-7. Configure Additional Settings
+7. **Configure Additional Settings**
 
 If your application requires additional configuration, make sure to update the corresponding settings in the Render dashboard.
 
 
-8. Add Build and Start Commands in Render
+8. **Add Build and Start Commands in Render**
 
 In the Render dashboard under "Settings," you can find the "Build Command" and "Start Command" sections. Ensure they are configured as follows:
 
@@ -607,7 +607,7 @@ In the Render dashboard under "Settings," you can find the "Build Command" and "
   - Start Command: gunicorn Hotel.Naif.wsgi:application
 
 
-9. Monitor and Debug (Optional)
+9. **Monitor and Debug (Optional)**
 
 Render provides monitoring and logging tools. Use them to monitor your application's performance and troubleshoot any issues.
 
