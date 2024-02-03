@@ -410,6 +410,31 @@ except User.DoesNotExist:
 
 
 
+## User Story
+
+User stories required to implement each epic were created. These were categorised according to whether they were 'must have' features required to implement a Minimum Viable Product (MVP).
+Please see the [Google sheet](https://docs.google.com/spreadsheets/d/1899SEBdH8end-S9U_1Ld0vy8ag0TXaoW/edit?usp=sharing&ouid=106045717972180530720&rtpof=true&sd=true) for detail.
+
+
+
+
+
+## Agile Development Methodology
+
+In this project, I adopted an Agile methodology using GitHub. Agile was chosen for its iterative and flexible approach, enabling quick adjustments to evolving requirements. GitHub's tools, such as Issues and Projects, facilitated seamless collaboration, efficient tracking of user stories, and effective project management. The Agile methodology allowed for continuous improvement, ensuring the project's adaptability and responsiveness to changing needs.
+
+
+  ![git1](assets/images/git1.png)
+  ![git2](assets/images/git2.png)
+  ![git3](assets/images/git3.png)
+  ![git4](assets/images/git4.png)
+  ![git5](assets/images/git5.png)
+  ![git6](assets/images/git6.png)
+  ![git7](assets/images/git7.png)
+  ![git8](assets/images/git8.png)
+
+
+
 
 
 
@@ -516,16 +541,17 @@ This project can be easily deployed using [Render](https://render.com), a cloud 
 ### Prerequisites
 
 1. **Render Account:**
+
    - Ensure you have a Render account. If not, you can sign up at [Render](https://render.com).
 
 ### Deployment Steps
 
 #### 1. Clone the Repository
 
-
-1. git clone `https://github.com/NaifZaghmout/Hotel.Naif.git`
+`git clone https://github.com/NaifZaghmout/Hotel.Naif.git`
 
 `cd hotel`
+
 
 2. Install Dependencies
 
@@ -533,41 +559,70 @@ Ensure that all necessary dependencies are installed. You can use the following 
 
 `pip install -r requirements.txt`
 
-3. Start the Application
+
+3. Database Setup (if applicable)
+
+If your application requires a database, make sure to set up and configure the database before deployment. Update the database connection settings accordingly.
+
+4. Start the Application
 
 Use Gunicorn to start the application:
 
-
 `gunicorn Hotel.Naif.wsgi:application`
 
-4. Configure Environment Variables on Render
+
+
+5. Configure Environment Variables on Render
 
 During the Render service setup, you need to configure environment variables. These may include database connection strings, API keys, or other configuration values.
 
 Navigate to the "Advanced" settings in Render.
+
 Add the required environment variables.
 
-5. Deploy the Service on Render
+
+6. Deploy the Service on Render
 
 Follow these steps to deploy your application on Render:
 
-In the Render dashboard, click "Create Web Service".
-Choose the appropriate branch to deploy.
-Select the environment and set the build command to pip install -r requirements.txt.
-Set the start command to gunicorn Hotel.Naif.wsgi:application.
-Choose the Free plan.
-In "Advanced" settings, add environment variables if needed.
+  - In the Render dashboard, click "Create Web Service".
+  - Choose the appropriate branch to deploy.
+  - Select the environment and set the build command to pip install -r requirements.txt.
+  - Set the start command to gunicorn Hotel.Naif.wsgi:application.
+  - Choose the Free plan.
+  - In "Advanced" settings, add environment variables if needed.
 
-6. Configure Additional Settings
+
+7. Configure Additional Settings
 
 If your application requires additional configuration, make sure to update the corresponding settings in the Render dashboard.
 
-7. Monitor and Debug (Optional)
+
+8. Add Build and Start Commands in Render
+
+In the Render dashboard under "Settings," you can find the "Build Command" and "Start Command" sections. Ensure they are configured as follows:
+
+  - Build Command: pip install -r requirements.txt
+
+  - Start Command: gunicorn Hotel.Naif.wsgi:application
+
+
+9. Monitor and Debug (Optional)
+
 Render provides monitoring and logging tools. Use them to monitor your application's performance and troubleshoot any issues.
 
-8. Access Your Deployed App
 
-- Once deployed, Render will provide a URL to access your live application.
+#### 10. Access Your Deployed App
 
-- You can find the live version [here](https://hotel-naif.onrender.com).
+Once the deployment is complete, Render will generate a URL that you can use to access your live application. To visit your deployed application, simply follow the link provided by Render.
 
+You can find the live version [here](https://hotel-naif.onrender.com).
+
+
+### Learn More About Render
+
+For detailed information about deploying and managing applications on Render, please refer to the [Render Documentation](https://render.com/docs).
+
+The Render documentation provides comprehensive guides and tutorials covering various aspects of using Render for application deployment. Explore the documentation to learn more about setting up web services, managing databases, configuring environment variables, and other essential topics.
+
+If you have specific questions or encounter issues during the deployment process, the Render documentation is a valuable resource for finding solutions and best practices.
