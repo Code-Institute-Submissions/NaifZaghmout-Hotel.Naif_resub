@@ -42,8 +42,7 @@ def create_user(request, user_type):
         new_user.is_superuser = False
         new_user.is_staff = user_type == "staff"
         new_user.save()
-        messages.success(request, f"{
-            user_type.capitalize()} Registration Successful")
+        messages.success(request, f"{user_type.capitalize()} Registration Successful")
         return redirect(f"{user_type}loginpage")
 
 
