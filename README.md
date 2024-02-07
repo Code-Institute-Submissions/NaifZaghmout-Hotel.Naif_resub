@@ -503,6 +503,21 @@ In this project, I adopted an Agile methodology using GitHub. Agile was chosen f
 
 
 
+## Wire Frame
+
+
+  ![wire1](assets/images/wire1.png)
+  ![wire2](assets/images/wire2.png)
+  ![wire3](assets/images/wire3.png)
+  ![wire4](assets/images/wire4.png)
+
+
+
+
+
+--------------------------------------------------------------------------------
+
+
 
 ## Credits
 
