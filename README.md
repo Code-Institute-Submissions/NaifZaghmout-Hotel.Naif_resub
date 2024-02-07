@@ -505,10 +505,20 @@ In this project, I adopted an Agile methodology using GitHub. Agile was chosen f
 
 ## Wire Frame
 
+- Home page (HOTEL-NAIF)
 
   ![wire1](assets/images/wire1.png)
+
+  - About us page
+
   ![wire2](assets/images/wire2.png)
+
+  - Contact us page
+
   ![wire3](assets/images/wire3.png)
+  
+  - Staff page
+
   ![wire4](assets/images/wire4.png)
 
 
